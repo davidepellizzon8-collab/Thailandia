@@ -271,7 +271,9 @@ details.day.done>summary .dtitle span::after{content:" · fatto";color:var(--lag
 /* ---------- sezioni: una alla volta ---------- */
 [hidden]{display:none!important}
 main>section.active{animation:secin .4s cubic-bezier(.2,.8,.2,1) both}
-main>section.active.swp{animation:secx .32s cubic-bezier(.2,.8,.2,1) both}
+main>section.active.swp{animation:secx .42s cubic-bezier(.2,.85,.25,1) both}
+.tabs a.on::after{animation:tabin .35s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes tabin{from{transform:scaleX(0)}to{transform:none}}
 @keyframes secx{from{opacity:0;transform:translateX(var(--dx,0))}to{opacity:1;transform:none}}
 @keyframes secin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 details.acc>summary .ico{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:1.1rem;background:color-mix(in srgb,var(--c) 16%,var(--surface))}
@@ -1179,10 +1181,12 @@ function renderTabs() {
 }
 let swipeDir = 0;
 function showSection(id) {
-  $$('main>section').forEach(s => {
+  const secs = $$('main>section'), prev = secs.findIndex(s => s.classList.contains('active')), cur = secs.findIndex(s => s.id === id);
+  if (!swipeDir && prev >= 0 && cur >= 0 && prev !== cur) swipeDir = cur > prev ? 1 : -1;
+  secs.forEach(s => {
     s.classList.toggle('active', s.id === id);
     s.classList.toggle('swp', s.id === id && !!swipeDir);
-    if (s.id === id) s.style.setProperty('--dx', swipeDir * 34 + 'px');
+    if (s.id === id) s.style.setProperty('--dx', swipeDir * 56 + 'px');
   });
   swipeDir = 0;
   $$('#tabs a').forEach(a => a.classList.toggle('on', a.dataset.go === id));
