@@ -330,9 +330,6 @@ header.top{border-bottom:1.5px solid var(--ink)}
 .hero .th2,.eyebrow{color:#ffd9a3}
 .btn{box-shadow:3px 3px 0 rgba(0,0,0,.35)}
 .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(0,0,0,.35)}
-.stamp{position:absolute;z-index:3;right:12px;bottom:20px;width:96px;color:#ffe2b0;opacity:.88;transform:rotate(-13deg);pointer-events:none}
-.stamp svg{display:block;width:100%;height:auto}
-@media (min-width:560px){.stamp{width:108px;right:22px;bottom:22px}}
 
 .card,.tcard,.pass,details.day,details.acc,.stage,.tile{box-shadow:none}
 .card,.tcard,.pass,.stage,details.day,details.acc{border-color:color-mix(in srgb,var(--ink) 22%,var(--line))}
@@ -1049,11 +1046,6 @@ function renderTrip() {
         </div>
       </div>
       ${SCENE}
-      <div class="stamp" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="stc" d="M60 60 m-43 0 a43 43 0 1 1 86 0 a43 43 0 1 1 -86 0"/></defs>
-        <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="60" cy="60" r="51" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text font-family="Fraunces,serif" font-size="9.5" font-weight="700" fill="currentColor"><textPath href="#stc" textLength="262" lengthAdjust="spacing">VENEZIA · BANGKOK · VENEZIA · ${e.getFullYear()} ·</textPath></text>
-        <text x="60" y="59" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-weight="800" fill="currentColor">${String(s.getDate()).padStart(2, '0')}.${String(s.getMonth() + 1).padStart(2, '0')}</text>
-        <text x="60" y="76" text-anchor="middle" font-family="Fraunces,serif" font-size="12" font-weight="600" fill="currentColor">${String(e.getDate()).padStart(2, '0')}.${String(e.getMonth() + 1).padStart(2, '0')}</text></svg></div>
     </div>
 
     ${heading('viaggio', 'Il viaggio in un colpo d\'occhio', 'Tocca un giorno per aprirlo subito.')}
