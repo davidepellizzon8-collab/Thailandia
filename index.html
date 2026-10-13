@@ -41,6 +41,8 @@ a{color:var(--brand)}
 button{font:inherit;color:inherit;cursor:pointer}
 main{max-width:720px;margin:0 auto;padding:0 16px}
 section{scroll-margin-top:var(--hdr)}
+main>section{display:none}
+main>section.active{display:block}
 p{margin:0 0 10px}
 strong{font-weight:600}
 :focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
@@ -1047,15 +1049,22 @@ function renderTabs() {
   const s = parse(TRIP.start), e = parse(TRIP.end);
   $('#hdrDates').textContent = `${s.getDate()} ${MESI[s.getMonth()]} – ${e.getDate()} ${MESI[e.getMonth()]}`;
 }
+function showSection(id) {
+  $$('main>section').forEach(s => s.classList.toggle('active', s.id === id));
+  $$('#tabs a').forEach(a => a.classList.toggle('on', a.dataset.go === id));
+}
 function goTo(id, closeId) {
   const el = document.getElementById(id);
   if (!el) return;
   if (closeId) { const c = document.getElementById(closeId); if (c) c.open = false; }
+  const sec = el.closest('main>section');
+  if (sec) showSection(sec.id);
   if (el.tagName === 'DETAILS') el.open = true;
   closeSheet();
   setTimeout(() => {
     el.classList.add('in');
-    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    if (el === sec) window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+    else el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
     safe(() => history.replaceState(null, '', '#' + id));
   }, 30);
 }
@@ -1191,9 +1200,7 @@ function init() {
   $('#closeAll').onclick = () => $$('details.day').forEach(d => d.open = false);
   const hdr = $('header.top'); const setH = () => document.documentElement.style.setProperty('--hdr', (hdr.offsetHeight + 8) + 'px');
   setH(); addEventListener('resize', setH);
-  const links = $$('#tabs a');
-  const spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.toggle('on', a.dataset.go === en.target.id)); }), { rootMargin: '-30% 0px -65% 0px' });
-  SECTIONS.forEach(([id]) => spy.observe(document.getElementById(id)));
+  showSection('viaggio');
   $$('.cal .tile, .passes .pass, .route .stage').forEach((el, i) => el.dataset.d = (i % 5) * 60);
   setupReveal(); setupScroll(); countUp();
   const h = location.hash.slice(1);
