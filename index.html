@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a4d57">
+<title>Thailandia 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700;800&display=swap">
+<style>
+/* Concept: alba sui calcari delle Andamane. Teal profondo + zafferano, regioni codificate a colore, percorso verticale che si disegna scorrendo. */
+:root{
+  --bg:#edf5f4;--surface:#ffffff;--surface2:#dfecea;--ink:#0b2a30;--mute:#55737a;--line:#cfe1de;
+  --saffron:#ff9a2e;--on-saffron:#2b1700;--accent-t:#b45f00;--brand:#0c6f78;--on-brand:#ffffff;
+  --bkk:#e8456b;--nord:#e59a0b;--lago:#0fa968;--sud:#0e8fd1;--travel:#7a6fd0;
+  --warn:#9a4d08;--warn-bg:#fff0d6;--tip:#0a7550;--tip-bg:#dcf4ea;--info:#25598f;--info-bg:#e0eefb;
+  --shadow:0 10px 28px rgba(8,50,56,.10);--glass:rgba(255,255,255,.78);
+  --display:"Prompt","Segoe UI",system-ui,sans-serif;--body:"IBM Plex Sans Thai","Segoe UI",system-ui,-apple-system,sans-serif;
+  --hdr:96px;--r:18px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#071a1e;--surface:#0f272c;--surface2:#16353b;--ink:#e8f3f1;--mute:#8fb0b3;--line:#1f4147;
+  --accent-t:#ffb454;--brand:#35d0c0;--on-brand:#052420;
+  --bkk:#ff7a96;--nord:#ffb83d;--lago:#3fd694;--sud:#4cb8f0;--travel:#a79cf2;
+  --warn:#ffc266;--warn-bg:#35260e;--tip:#58e0ac;--tip-bg:#0f3329;--info:#8ec3f5;--info-bg:#14293f;
+  --shadow:0 10px 28px rgba(0,0,0,.35);--glass:rgba(10,30,35,.78);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#071a1e;--surface:#0f272c;--surface2:#16353b;--ink:#e8f3f1;--mute:#8fb0b3;--line:#1f4147;
+  --accent-t:#ffb454;--brand:#35d0c0;--on-brand:#052420;
+  --bkk:#ff7a96;--nord:#ffb83d;--lago:#3fd694;--sud:#4cb8f0;--travel:#a79cf2;
+  --warn:#ffc266;--warn-bg:#35260e;--tip:#58e0ac;--tip-bg:#0f3329;--info:#8ec3f5;--info-bg:#14293f;
+  --shadow:0 10px 28px rgba(0,0,0,.35);--glass:rgba(10,30,35,.78);color-scheme:dark}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background-color:var(--bg);
+  background-image:radial-gradient(90% 40% at 100% 0%,color-mix(in srgb,var(--sud) 12%,transparent),transparent),radial-gradient(70% 30% at 0% 55%,color-mix(in srgb,var(--saffron) 8%,transparent),transparent);
+  background-repeat:no-repeat;color:var(--ink);font:16px/1.6 var(--body);overflow-x:hidden;padding-bottom:120px}
+a{color:var(--brand)}
+button{font:inherit;color:inherit;cursor:pointer}
+main{max-width:720px;margin:0 auto;padding:0 16px}
+section{scroll-margin-top:var(--hdr)}
+p{margin:0 0 10px}
+strong{font-weight:600}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+
+/* ---------- barra superiore ---------- */
+header.top{position:sticky;top:0;z-index:20;background:var(--glass);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:3px;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--saffron),var(--bkk),var(--sud))}
+.top .bar{max-width:720px;margin:0 auto;padding:9px 16px 0;display:flex;align-items:baseline;justify-content:space-between}
+.logo{font:800 .95rem var(--display);letter-spacing:.16em}
+.logo small{font:500 .78rem var(--body);letter-spacing:0;color:var(--mute);margin-left:8px}
+.thai{font:600 .85rem var(--display);color:var(--accent-t)}
+.tabs{max-width:720px;margin:0 auto;display:flex;gap:4px;padding:6px 10px 8px}
+.tabs a{flex:1;text-align:center;text-decoration:none;color:var(--mute);font:600 .8rem var(--display);padding:7px 2px;border-radius:99px;transition:background .25s,color .25s}
+.tabs a.on{background:var(--ink);color:var(--bg)}
+
+/* ---------- intestazioni sezione ---------- */
+.sh{margin:46px 0 16px}
+.sh .th{font:600 .82rem var(--display);color:var(--accent-t);letter-spacing:.1em}
+.sh h2{font:800 1.8rem/1.12 var(--display);margin:2px 0 0;text-wrap:balance}
+.sh p{color:var(--mute);margin:6px 0 0;font-size:.95rem}
+h3{font:700 1.05rem var(--display);margin:0 0 8px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;margin:14px 0 0;border-radius:28px;overflow:hidden;color:#fff;isolation:isolate;
+  background:linear-gradient(180deg,#05262d 0%,#0a4d57 46%,#e9763f 88%,#ffb25c 100%)}
+.hero-txt{position:relative;z-index:2;padding:26px 22px 0}
+.eyebrow{font:600 .78rem var(--display);letter-spacing:.2em;text-transform:uppercase;color:#ffd9a3}
+.hero h1{margin:8px 0 0;font:800 clamp(2rem,9.6vw,3.5rem)/1 var(--display);letter-spacing:.05em}
+.hero h1 span{display:inline-block;animation:rise .9s cubic-bezier(.2,.9,.3,1.2) both;animation-delay:calc(var(--i)*70ms + 150ms)}
+.hero .th2{font:500 1rem var(--display);color:#ffd9a3;margin-top:4px;letter-spacing:.08em;animation:fade 1.4s .9s both}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+.chips span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(4px);border-radius:99px;padding:3px 12px;font-size:.84rem}
+.count{display:flex;align-items:baseline;gap:10px;margin:18px 0 4px}
+.count .num{font:800 3.2rem/1 var(--display);font-variant-numeric:tabular-nums;color:#ffcf8a}
+.count .lbl{font-size:.95rem;opacity:.92}
+.tripbar{height:6px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden;margin:2px 0 6px}
+.tripbar i{display:block;height:100%;width:0;background:#ffcf8a;border-radius:9px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.lead{font-size:.95rem;opacity:.95;margin:10px 0 16px;max-width:52ch}
+.cta{display:flex;flex-wrap:wrap;gap:10px;padding-bottom:6px}
+.btn{border:0;border-radius:99px;padding:12px 20px;font:700 .95rem var(--display);background:var(--saffron);color:var(--on-saffron);box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .15s}
+.btn.ghost{background:rgba(255,255,255,.16);color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.3)}
+.btn:active{transform:scale(.95)}
+.scene{display:block;width:100%;height:auto;margin-top:-6px;position:relative;z-index:1}
+.sun{animation:sunrise 2.6s cubic-bezier(.2,.8,.2,1) both;transform-box:fill-box}
+.glow{animation:breathe 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.wave{animation:drift var(--t,9s) linear infinite}
+.wave.rev{animation-direction:reverse}
+.boat{animation:bob 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.boatx{animation:sail 26s ease-in-out infinite alternate}
+.bird{animation:fly var(--t,16s) linear infinite;opacity:.85}
+@keyframes rise{from{transform:translateY(.7em) rotate(4deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes sunrise{from{transform:translateY(60px);opacity:.2}to{transform:none;opacity:1}}
+@keyframes breathe{50%{transform:scale(1.08);opacity:.8}}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(60px)}}
+@keyframes bob{50%{transform:translateY(3px) rotate(1.6deg)}}
+@keyframes sail{from{transform:translateX(-40px)}to{transform:translateX(150px)}}
+@keyframes fly{from{transform:translate(-40px,0)}50%{transform:translate(380px,-14px)}to{transform:translate(780px,0)}}
+
+/* ---------- calendario a tessere ---------- */
+.cal{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.tile{--c:var(--travel);position:relative;border:1px solid var(--line);background:color-mix(in srgb,var(--c) 14%,var(--surface));border-radius:14px;padding:8px 2px 8px;text-align:center;line-height:1.1;overflow:hidden;transition:transform .18s,box-shadow .18s;min-width:0}
+.tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--c)}
+.tile small{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.tile b{display:block;font:800 1.45rem/1.15 var(--display);font-variant-numeric:tabular-nums}
+.tile span{display:block;font-size:.66rem;color:var(--mute);margin-top:2px;padding:0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile:active{transform:scale(.94)}
+@media (hover:hover){.tile:hover{transform:translateY(-3px);box-shadow:var(--shadow)}}
+.tile.today{outline:3px solid var(--saffron);outline-offset:1px}
+.key{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--mute);margin:12px 0 0}
+.key i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:var(--c)}
+
+/* ---------- percorso ---------- */
+.route{position:relative;padding-left:44px}
+.rline{position:absolute;left:15px;top:8px;bottom:8px;width:4px;border-radius:4px;background:var(--line)}
+.rline i{display:block;width:100%;height:0;border-radius:4px;background:linear-gradient(180deg,var(--bkk),var(--nord),var(--lago),var(--sud))}
+.stage{--c:var(--travel);position:relative;margin-bottom:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 16%,var(--surface)),var(--surface) 70%);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px 14px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.stage:active{transform:scale(.985)}
+@media (hover:hover){.stage:hover{transform:translateY(-3px);box-shadow:var(--shadow)}}
+.node{position:absolute;left:-37px;top:20px;width:18px;height:18px;border-radius:50%;background:var(--c);border:4px solid var(--bg);box-shadow:0 0 0 2px var(--c)}
+.stage.live .node::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--c);animation:ping 1.8s ease-out infinite}
+@keyframes ping{from{transform:scale(.5);opacity:1}to{transform:scale(1.5);opacity:0}}
+.stage .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.stage .where{font:700 1.2rem/1.2 var(--display)}
+.stage .when{font-size:.78rem;font-weight:600;color:var(--mute);letter-spacing:.02em}
+.stage .hl{font-size:.92rem;color:var(--mute);margin:3px 0 0}
+.stage .base{font-size:.84rem;margin-top:6px;display:flex;gap:6px;align-items:center}
+.stage .base::before{content:"";width:8px;height:8px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--c);flex:none}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pill{border:1.5px solid var(--c,var(--brand));color:var(--ink);background:transparent;border-radius:99px;padding:5px 12px;font:600 .8rem var(--display);text-decoration:none;transition:background .15s,transform .15s}
+.pill:active{transform:scale(.93);background:color-mix(in srgb,var(--c,var(--brand)) 25%,transparent)}
+.pill.today{background:var(--saffron);border-color:var(--saffron);color:var(--on-saffron)}
+.legend{font-size:.85rem;color:var(--mute);margin:0 0 12px}
+
+/* ---------- voli ---------- */
+.passes{display:grid;gap:10px}
+.pass{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;position:relative}
+.pass::before,.pass::after{content:"";position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--bg);border:1px solid var(--line);transform:translateY(-50%)}
+.pass::before{left:-8px}.pass::after{right:-8px}
+.pass .d{font:600 .74rem var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.pass .iata{display:flex;align-items:center;gap:10px;margin:2px 0}
+.pass .iata b{font:800 1.7rem/1 var(--display)}
+.pass .path{flex:1;position:relative;height:18px;border-bottom:2px dashed var(--line);margin-bottom:6px;min-width:20px}
+.pass .path svg{position:absolute;left:0;top:2px;width:18px;height:18px;fill:var(--brand);animation:plane 4s ease-in-out infinite}
+@keyframes plane{0%{left:0}100%{left:calc(100% - 18px)}}
+.pass .nm{display:flex;justify-content:space-between;font-size:.84rem;color:var(--mute)}
+.pass .tm{font:700 .95rem var(--display);margin-top:4px;font-variant-numeric:tabular-nums}
+.sub3{font:700 .8rem var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:18px 0 8px}
+
+/* ---------- box ---------- */
+.box{border-radius:14px;padding:12px 16px;margin:14px 0;font-size:.94rem;background:var(--bg-b);color:var(--ink)}
+.box h4{margin:0 0 4px;font:700 .98rem var(--display);color:var(--fg-b)}
+.box ul{margin:4px 0 0;padding-left:18px}.box li{margin:4px 0}
+.box p:last-child{margin-bottom:0}
+.box.warn{--bg-b:var(--warn-bg);--fg-b:var(--warn)}
+.box.tip{--bg-b:var(--tip-bg);--fg-b:var(--tip)}
+.box.info{--bg-b:var(--info-bg);--fg-b:var(--info)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
+
+/* ---------- giorni ---------- */
+details.day{--c:var(--travel);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;scroll-margin-top:var(--hdr);overflow:hidden;transition:box-shadow .25s}
+details.day[open]{box-shadow:var(--shadow)}
+details.day>summary{list-style:none;cursor:pointer;display:flex;gap:14px;align-items:center;padding:12px 14px;background:linear-gradient(90deg,color-mix(in srgb,var(--c) 18%,var(--surface)),var(--surface) 75%)}
+details.day>summary::-webkit-details-marker{display:none}
+.dbadge{flex:none;width:58px;text-align:center;border-radius:14px;background:var(--surface);border:1px solid var(--line);border-bottom:4px solid var(--c);padding:5px 2px;line-height:1.05}
+.dbadge b{display:block;font:800 1.45rem var(--display)}
+.dbadge small{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.dtitle{flex:1;min-width:0}
+.dtitle strong{display:block;font:700 1rem/1.25 var(--display)}
+.dtitle span{font-size:.84rem;color:var(--mute)}
+.chev{flex:none;width:28px;height:28px;border-radius:50%;background:var(--surface2);display:grid;place-items:center;transition:transform .3s cubic-bezier(.3,1.4,.5,1)}
+.chev::before{content:"";width:7px;height:7px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(-45deg);margin-left:-2px}
+details[open]>summary .chev{transform:rotate(90deg)}
+.todaytag{background:var(--saffron);color:var(--on-saffron);font:700 .66rem var(--display);border-radius:99px;padding:1px 9px;margin-left:8px;vertical-align:middle;letter-spacing:.05em}
+.dbody{padding:4px 14px 16px}
+details[open] .dbody{animation:unfold .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes unfold{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.tl{list-style:none;margin:0;padding:0 0 0 18px;position:relative}
+.tl::before{content:"";position:absolute;left:4px;top:14px;bottom:14px;width:2px;background:var(--line)}
+.tl li{position:relative;padding:9px 0;display:grid;gap:3px}
+.tl li::before{content:"";position:absolute;left:-18px;top:16px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2.5px solid var(--c)}
+.tl li.nt::before{display:none}
+.tl .t{justify-self:start;font:700 .76rem var(--display);letter-spacing:.03em;color:var(--ink);background:color-mix(in srgb,var(--c) 22%,var(--surface));border-radius:99px;padding:1px 10px}
+.dnav{display:flex;gap:8px;margin-top:16px}
+.dnav button{flex:1;border:1px solid var(--line);background:var(--surface2);border-radius:12px;padding:11px 6px;font:600 .84rem var(--display);transition:transform .15s,background .15s}
+.dnav button:active{transform:scale(.95)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.tools button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 14px;font:600 .82rem var(--display)}
+
+/* ---------- tabelle a schede ---------- */
+.tcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:8px}
+.tcard .h{font:700 .98rem var(--display);margin-bottom:3px}
+.tcard .kv{display:grid;grid-template-columns:84px 1fr;gap:2px 10px;font-size:.88rem}
+.tcard .kv span:nth-child(odd){color:var(--mute)}
+.tcard.tot{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tcard.tot .kv span:nth-child(odd){color:inherit;opacity:.7}
+
+/* ---------- liste ---------- */
+ul.pl{list-style:none;margin:6px 0 0;padding:0}
+ul.pl li{padding:8px 0;border-top:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}
+ul.pl li:first-child{border-top:0}
+ul.pl label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;width:100%}
+ul.pl input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;margin:1px 0 0;border-radius:8px;border:2px solid var(--mute);background:var(--surface);display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s}
+ul.pl input::after{content:"";width:6px;height:11px;border:solid var(--on-brand);border-width:0 3px 3px 0;transform:rotate(45deg) scale(0);transition:transform .2s cubic-bezier(.3,1.6,.5,1);margin-top:-2px}
+ul.pl input:checked{background:var(--brand);border-color:var(--brand);transform:scale(1.08)}
+ul.pl input:checked::after{transform:rotate(45deg) scale(1)}
+ul.pl input:checked+span{color:var(--mute);text-decoration:line-through}
+ul.bl{margin:6px 0 10px;padding-left:20px}ul.bl li{margin:6px 0}
+.meter{display:flex;align-items:center;gap:10px;margin:0 0 12px;font:600 .85rem var(--display)}
+.meter .bar{flex:1;height:8px;border-radius:9px;background:var(--surface2);overflow:hidden}
+.meter .bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--saffron),var(--lago));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+
+/* ---------- fisarmoniche ---------- */
+details.acc{--c:var(--brand);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;scroll-margin-top:var(--hdr);overflow:hidden}
+details.acc>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;font:700 1rem var(--display)}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary .chev{margin-left:auto}
+details.acc>summary .dot{width:12px;height:12px;border-radius:50%;background:var(--c);flex:none}
+details.acc small{font:500 .8rem var(--body);color:var(--mute)}
+details.acc .abody{padding:0 16px 16px}
+details[open] .abody{animation:unfold .45s cubic-bezier(.2,.8,.2,1)}
+.abody h4{margin:16px 0 4px;font:700 .98rem var(--display)}
+.pills.links .pill{--c:var(--brand)}
+
+footer{text-align:center;color:var(--mute);margin:44px 0 10px}
+footer .th{font:800 1.5rem var(--display);color:var(--accent-t);display:block}
+footer small{font-size:.84rem}
+
+/* ---------- FAB + menu ---------- */
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.fab button{border:0;border-radius:99px;box-shadow:0 8px 22px rgba(0,0,0,.3);font:700 1rem var(--display);transition:transform .15s,opacity .3s}
+.fab button:active{transform:scale(.92)}
+.fab .go{position:relative;background:var(--saffron);color:var(--on-saffron);padding:14px 22px}
+.fab .go::after{content:"";position:absolute;inset:0;border-radius:99px;border:2px solid var(--saffron);animation:pulse 3.2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.9}60%,100%{transform:scale(1.35,1.6);opacity:0}}
+.fab .up{background:var(--surface);color:var(--ink);width:44px;height:44px;border:1px solid var(--line);opacity:0;pointer-events:none;transform:translateY(8px)}
+.fab .up.show{opacity:1;pointer-events:auto;transform:none}
+.sheet-bg{position:fixed;inset:0;background:rgba(2,16,20,.55);backdrop-filter:blur(3px);z-index:40;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.sheet-bg.on{opacity:1;visibility:visible}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:84vh;overflow-y:auto;background:var(--surface);border-radius:26px 26px 0 0;padding:10px 16px calc(26px + env(safe-area-inset-bottom,0px));max-width:720px;margin:0 auto;transform:translateY(100%);transition:transform .45s cubic-bezier(.2,1.1,.3,1)}
+.sheet-bg.on .sheet{transform:none}
+.sheet .grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 6px}
+.sheet h3{margin:16px 0 8px;font:700 .76rem var(--display);text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+.sheet .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.sheet .grid.days{grid-template-columns:repeat(3,1fr)}
+.sheet button.it{--c:var(--brand);border:1px solid var(--line);background:color-mix(in srgb,var(--c) 12%,var(--surface));border-radius:12px;padding:10px 10px;text-align:left;font:600 .86rem/1.2 var(--display);min-width:0;transition:transform .15s}
+.sheet button.it:active{transform:scale(.95)}
+.sheet button.it small{display:block;font:400 .74rem var(--body);color:var(--mute);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- comparsa allo scorrimento ---------- */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- giorni fatti ---------- */
+.donebar{display:flex;align-items:center;gap:10px;margin:12px 0 0;font:600 .84rem var(--display)}
+.donebar .bar{flex:1;height:8px;border-radius:9px;background:var(--surface2);overflow:hidden;min-width:40px}
+.donebar .bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--saffron),var(--lago));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.tile.done{opacity:.6}
+.tile.done b::after{content:"✓";font-size:.75rem;margin-left:3px;color:var(--lago)}
+.pill.done{background:color-mix(in srgb,var(--lago) 22%,transparent);border-color:var(--lago);text-decoration:line-through;color:var(--mute)}
+.stage.done{opacity:.72}
+.stage.done .where::after{content:" ✓";color:var(--lago)}
+details.day.done>summary .dtitle strong{color:var(--mute)}
+details.day.done>summary .dbadge{opacity:.6}
+details.day.done>summary .dtitle span::after{content:" · fatto";color:var(--lago);font-weight:600}
+.donechk{display:flex;align-items:center;gap:12px;margin:2px 0 6px;padding:10px 12px;border-radius:12px;background:var(--surface2);cursor:pointer;font:600 .9rem var(--display)}
+.donechk input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;border-radius:8px;border:2px solid var(--mute);background:var(--surface);display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s}
+.donechk input::after{content:"";width:6px;height:11px;border:solid var(--on-brand);border-width:0 3px 3px 0;transform:rotate(45deg) scale(0);transition:transform .2s cubic-bezier(.3,1.6,.5,1);margin-top:-2px}
+.donechk input:checked{background:var(--lago);border-color:var(--lago);transform:scale(1.08)}
+.donechk input:checked::after{transform:rotate(45deg) scale(1)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar"><span class="logo">THAILANDIA<small id="hdrDates"></small></span><span class="thai" lang="th">ประเทศไทย</span></div>
+  <nav class="tabs" id="tabs"></nav>
+  <div class="progress" id="progress"></div>
+</header>
+<main>
+  <section id="viaggio"></section>
+  <section id="giorni"></section>
+  <section id="spostamenti"></section>
+  <section id="zaino"></section>
+  <section id="info"></section>
+  <footer></footer>
+</main>
+<div class="fab">
+  <button class="up" id="upBtn" aria-label="Torna su">↑</button>
+  <button class="go" id="goBtn">Vai a…</button>
+</div>
+<div class="sheet-bg" id="sheetBg"><div class="sheet" id="sheet"></div></div>
+
+<script>
+/* =====================================================================
+   DATI DEL VIAGGIO — per aggiornare la pagina modifica SOLO questo oggetto.
+   - Testo: **grassetto** supportato. Niente HTML.
+   - days[].items: ["orario", "testo"]  (orario "" = semplice punto elenco)
+   - days[].boxes: kind "warn" | "tip" | "info"
+   ===================================================================== */
+const TRIP = {
+  title: "THAILANDIA",
+  subtitle: "Nord · Giungla · Andamane",
+  start: "2026-11-25",
+  end: "2026-12-09",
+  meta: ["8 persone", "13 notti", "zaino in stiva"],
+  summary: "Due giorni pieni a Bangkok, poi il Nord (Chiang Rai e Chiang Mai), un volo verso Phuket e otto giorni fra la giungla di Khao Sok, la falesia di Railay, Phi Phi, Koh Lanta e le isole del mare delle Andamane. Rientro da Trang via Bangkok.",
+
+  flights: {
+    intl: [
+      ["Mer 25/11", "Venezia VCE → Vienna VIE", "14:50 – 16:00"],
+      ["Mer 25/11", "Vienna VIE → Bangkok BKK (Suvarnabhumi)", "23:25 – 15:30 (+1)"],
+      ["Mer 09/12", "Bangkok BKK → Vienna VIE", "14:00 – 19:35"],
+      ["Mer 09/12", "Vienna VIE → Venezia VCE", "21:10 – 22:15"]
+    ],
+    domestic: [
+      ["Sab 28/11", "Bangkok DMK (Don Mueang) → Chiang Rai CEI", "17:20 – 18:45"],
+      ["Mar 01/12", "Chiang Mai CNX → Phuket HKT", "11:40 – 13:50"],
+      ["Mar 08/12", "Trang TST → Bangkok DMK (Don Mueang)", "17:30 – 18:55"]
+    ]
+  },
+
+  alerts: [
+    { kind: "warn", title: "Due aeroporti a Bangkok",
+      text: "Arrivo il 26/11 a **BKK (Suvarnabhumi)**, ma il 28/11 si parte da **DMK (Don Mueang)**. L'8/12 si atterra a DMK e il 9/12 si riparte da BKK. Sono a ~35 km e 45–90 min di traffico. La navetta gratuita è solo per chi ha una coincidenza in giornata: usate Grab/Bolt (400–600 THB a veicolo, **2 auto** per il gruppo). Prima di prenotare un hotel \"vicino all'aeroporto\" controllate QUALE aeroporto." },
+    { kind: "warn", title: "Bagaglio sui voli interni",
+      text: "I voli domestici (AirAsia, Nok Air, Thai Lion, Thai VietJet) includono di norma solo 7 kg a mano. Lo zaino da stiva da 15–20 kg va acquistato a parte: online 400–700 THB a tratta, in aeroporto anche il triplo. **Verificate ORA** che sia incluso sui 3 voli interni, altrimenti compratelo online. Su alcune compagnie il peso è cumulabile fra passeggeri della stessa prenotazione." }
+  ],
+
+  stages: [
+    { id: "s0", color: "travel", dates: "25/11", where: "Partenza", base: "Venezia → Vienna → Bangkok", hl: "Scalo di 7h25 a Vienna: mercatini di Natale", days: ["d1"] },
+    { id: "s1", color: "bkk", dates: "26–27/11 · 2 notti", where: "Bangkok", base: "Silom / Sathorn o Sukhumvit (Asok)", hl: "Grand Palace, Wat Pho e Wat Arun, Chinatown di sera, rooftop", days: ["d2", "d3"] },
+    { id: "s2", color: "nord", dates: "28/11 · 1 notte", where: "Chiang Rai", base: "Centro città, zona Clock Tower", hl: "Chatuchak, volo serale e Saturday Walking Street", days: ["d4"] },
+    { id: "s3", color: "nord", dates: "29–30/11 · 2 notti", where: "Chiang Mai", base: "Old City (dentro le mura) o Nimman", hl: "Tempio Bianco e Blu, Doi Suthep, Sunday Walking Street", days: ["d5", "d6"] },
+    { id: "s4", color: "lago", dates: "01/12 · 1 notte", where: "Khao Sok (villaggio)", base: "Khlong Sok village", hl: "Transfer da Phuket, prima sera in giungla", days: ["d7"] },
+    { id: "s5", color: "lago", dates: "02/12 · 1 notte", where: "Lago Cheow Lan", base: "Raft house galleggiante", hl: "Kayak fra i pinnacoli, safari all'alba", days: ["d8"] },
+    { id: "s6", color: "sud", dates: "03/12 · 1 notte", where: "Ao Nang / Railay", base: "Ao Nang beach road", hl: "Cuscinetto logistico + mattina a Railay", days: ["d9"] },
+    { id: "s7", color: "sud", dates: "04–05/12 · 2 notti", where: "Koh Phi Phi", base: "Long Beach (Hat Yao), non Tonsai", hl: "Longtail privato all'alba: Maya Bay, Pileh Lagoon, Bamboo Island", days: ["d10", "d11"] },
+    { id: "s8", color: "sud", dates: "06–07/12 · 2 notti", where: "Koh Lanta", base: "Klong Nin o Long Beach (Phra Ae)", hl: "Koh Rok e Koh Haa, tramonti nei beach bar, Old Town", days: ["d12", "d13"] },
+    { id: "s9", color: "bkk", dates: "08/12 · 1 notte", where: "Bangkok", base: "Sukhumvit o Riverside", hl: "Ultima cena e ultimi acquisti", days: ["d14"] },
+    { id: "s10", color: "travel", dates: "09/12", where: "Rientro", base: "Bangkok → Vienna → Venezia", hl: "Volo BKK 14:00, a casa alle 22:15", days: ["d15"] }
+  ],
+
+  why: [
+    "Il vincolo vero è il volo TST → DMK dell'8/12: si finisce a Trang, quindi la rotta scende da nord (Phuket) verso sud (Lanta / Trang) senza mai tornare indietro.",
+    "La notte ad Ao Nang non è sprecata: rientrando dal lago verso le 13:00 non fareste in tempo per l'ultimo traghetto per Phi Phi, e vi guadagnate una mattina a Railay.",
+    "Un solo cambio-base ogni due notti nella seconda metà: con 8 zaini ogni spostamento in più costa un'ora di logistica."
+  ],
+
+  days: [
+    { id: "d1", date: "2026-11-25", color: "travel", title: "Venezia → Vienna → Bangkok", place: "Viaggio",
+      items: [
+        ["Vienna", "Scalo di **7h25** (16:00 → 23:25). Abbastanza per scendere in città: il City Airport Train (CAT) porta a Wien Mitte in 16 minuti, il treno regionale S7 in 25 minuti a metà prezzo. A fine novembre i mercatini di Natale sono aperti attorno al Rathaus e a Karlsplatz: cena e vin brulé, poi rientro entro le **21:00**."],
+        ["Bagagli", "Se il biglietto è unico viaggiano diretti fino a Bangkok. Verificatelo al check-in a Venezia: se dicono di ritirarli a Vienna, restate in aeroporto."],
+        ["Notte", "Il volo notturno dura circa 10h. Provate a dormire: atterrate alle 15:30 e conviene arrivare fino a sera per allineare il fuso (+6h rispetto all'Italia)."],
+        ["TDAC", "Compilate il **TDAC** (carta di sbarco digitale, obbligatoria) nei 3 giorni prima dell'arrivo, quindi dal 23/11 in poi, o durante lo scalo a Vienna. Dettagli nella sezione Info."]
+      ],
+      boxes: [] },
+
+    { id: "d2", date: "2026-11-26", color: "bkk", title: "Arrivo a Bangkok · prima serata a Chinatown", place: "Bangkok",
+      items: [
+        ["15:30", "Atterraggio a Suvarnabhumi. Con 8 persone immigrazione e bagagli portano via facilmente un'ora."],
+        ["15:30–17:00", "Immigrazione (QR del TDAC pronto sul telefono), ritiro zaini, bancomat e SIM. Prelevate una cifra consistente al primo bancomat: la commissione è fissa (220 THB) a ogni prelievo."],
+        ["17:00–18:15", "Trasferimento in città. Airport Rail Link fino a Phaya Thai (45 min, 45 THB) è il più economico ma con 8 zaini è scomodo; meglio **due Grab/taxi** (~400–500 THB a veicolo, 45–70 min)."],
+        ["19:30", "**Yaowarat, la Chinatown di Bangkok.** Le bancarelle aprono verso le 18:00 e la strada diventa un unico ristorante a cielo aperto: pad thai, ostriche alla griglia, zuppe di noodle, mango sticky rice. 3–5 € a testa."],
+        ["Dopo", "Se avete energie, un rooftop per il primo colpo d'occhio. Sky Bar del Lebua è il più famoso (dress code e prezzi europei); Above Riva, Tichuca o il tetto dell'ICONSIAM costano molto meno."]
+      ],
+      boxes: [
+        { kind: "info", title: "Dove dormire a Bangkok", list: [
+          "**Silom / Sathorn**: centrale, ben servita da BTS e metro, vicina a fiume e Chinatown. La scelta migliore per due notti brevi.",
+          "**Sukhumvit** (Asok / Phrom Phong / Thonglor): più moderna, tantissimi locali, ottima se volete uscire.",
+          "**Khao San Road**: economica e caotica, vicina ai templi ma lontana dalla metro. Divertente per una serata, faticosa come base.",
+          "Con 8 persone valutate un appartamento intero o 4 doppie nello stesso hotel: un 3 stelle buono sta sui 900–1.500 THB a camera."] }
+      ] },
+
+    { id: "d3", date: "2026-11-27", color: "bkk", title: "Bangkok · templi, fiume e tramonto", place: "Bangkok",
+      items: [
+        ["08:00", "Sveglia presto, davvero: alle 10:30 il Grand Palace è un formicaio e fanno 34 gradi."],
+        ["08:30–10:30", "**Grand Palace e Wat Phra Kaew** · 500 THB. Apre alle 08:30, biglietteria fino alle 15:30. Dress code rigido: spalle e ginocchia coperte, niente canottiere, pantaloncini o infradito da mare. Tenete una maglietta e pantaloni lunghi leggeri nello zainetto."],
+        ["10:45–12:00", "**Wat Pho** · 300 THB, a 10 minuti a piedi. Buddha sdraiato lungo 46 metri e cortile dei chedi. Qui c'è la scuola di massaggio thai più antica: un'ora costa ~480 THB."],
+        ["12:30", "Pranzo a Tha Maharaj o nei vicoli attorno a Tha Tien."],
+        ["13:30–15:00", "**Wat Arun** · 200 THB. Si attraversa il fiume col ferry da Tha Tien: 5 THB e due minuti."],
+        ["15:30–17:30", "Chao Phraya Express Boat (bandiera arancione, 16 THB) fino a Sathorn o ICONSIAM. Alternativa meno turistica: **Talat Noi**, officine, murales e case-bottega cinesi lungo il fiume."],
+        ["Tramonto", "Dal fiume o da un rooftop. Poi cena e, per la serata classica, Khao San Road (kitsch ma da fare una volta). Alternativa più locale: **Soi Rambuttri**."]
+      ],
+      boxes: [
+        { kind: "tip", title: "Muoversi a Bangkok", list: [
+          "Scaricate **Grab** (e Bolt): tariffa fissa, niente contrattazione. Per 8 servono sempre 2 veicoli, prenotateli separatamente e datevi un punto di ritrovo.",
+          "BTS Skytrain e MRT: puliti, climatizzati, 17–60 THB a corsa. Nelle ore di punta (7–9 e 16–19) battono qualsiasi auto.",
+          "I tuk-tuk sono un'esperienza, non un mezzo: costano più di un Grab. Contrattate prima, dimezzando la prima cifra."] },
+        { kind: "warn", title: "Truffa del tempio chiuso", text: "Chiunque davanti a un tempio dica che \"oggi è chiuso per una cerimonia\" e proponga un giro alternativo: è la truffa più vecchia della città." }
+      ] },
+
+    { id: "d4", date: "2026-11-28", color: "nord", title: "Chatuchak → volo per Chiang Rai", place: "Bangkok → Chiang Rai",
+      items: [
+        ["Mattina", "Check-out e deposito zaini in hotel (gratis ovunque)."],
+        ["10:00–13:30", "**Chatuchak Weekend Market** (sabato, comodo perché a metà strada verso Don Mueang). BTS fino a Mo Chit. Oltre 15.000 bancarelle: fissate un punto di ritrovo e un'ora. Contrattate sempre, si parte dal 50–60% del prezzo. Qui potete comprare magliette leggere e pantaloni da tempio."],
+        ["14:00", "Rientro in hotel per gli zaini, oppure (più efficiente) portateli con voi e lasciateli in un deposito bagagli vicino a Mo Chit."],
+        ["15:15", "Grab per **Don Mueang (DMK)**: 20–30 min, ~250 THB a veicolo. Al terminal domestico entro le **15:45** per il volo delle 17:20."],
+        ["18:45", "Arrivo a Chiang Rai. L'aeroporto è a 10 km dal centro: taxi ufficiale ~200–250 THB a veicolo, 20 minuti."],
+        ["Sera", "**Saturday Walking Street**: ogni sabato Thanalai Road è chiusa al traffico dalle 16:00 a mezzanotte. Cibo del nord (khao soi, sai ua, larb), artigianato delle tribù, musica dal vivo e food court all'aperto con piatti da 60–80 THB."]
+      ],
+      boxes: [
+        { kind: "info", title: "Il nord è un'altra Thailandia", text: "Fine novembre è la stagione migliore: 28–30 °C di giorno ma 14–17 °C all'alba e la sera, aria secca, cielo terso. Servono una felpa e pantaloni lunghi. La cucina Lanna ha meno cocco e più erbe, salsicce speziate, kaeng hang lay e la zuppa khao soi: provatela." }
+      ] },
+
+    { id: "d5", date: "2026-11-29", color: "nord", title: "Chiang Rai: i tre templi → Chiang Mai", place: "Chiang Rai → Chiang Mai",
+      items: [
+        ["Prima", "La mossa giusta per 8: **minivan con autista per tutta la giornata**, con consegna finale a Chiang Mai. 4.500–6.500 THB in tutto (~600–800 THB a testa), bagagli in macchina, nessun problema di orari. Si prenota in hotel la sera prima o su GetYourGuide / 12Go."],
+        ["08:30", "**Wat Rong Khun, il Tempio Bianco** · 100 THB, apre alle 08:00. Andateci per primi: alle 10:00 arrivano i pullman. Più opera d'arte contemporanea che tempio: il ponte sul \"mare di mani\", gli specchietti, i murales con Neo di Matrix e Hello Kitty."],
+        ["10:30", "**Baan Dam, la Casa Nera** · 80 THB, 09:00–17:00 con pausa 12:00–13:00. Quaranta strutture in teak nero piene di ossa, pelli e corni: l'opposto del Tempio Bianco."],
+        ["12:00", "Pranzo in centro."],
+        ["13:30", "**Wat Rong Suea Ten, il Tempio Blu** · ingresso libero (offerta). Il più piccolo e fotogenico: blu cobalto e oro, Buddha bianco enorme. Bastano 40 minuti."],
+        ["15:00", "Se avete tempo: Choui Fong Tea Plantation (colline di tè a 25 km) o Singha Park. Altrimenti partite prima."],
+        ["16:00–19:30", "Trasferimento a Chiang Mai: 3h–3h30 per 190 km di strada di montagna."],
+        ["20:00", "**Sunday Walking Street**: il mercato della domenica di Chiang Mai, il più bello della Thailandia. Parte da Tha Pae Gate e attraversa la città vecchia fino alle 22:30. Cibo, artigianato vero, musicisti a ogni angolo. È l'unica domenica che avete."]
+      ],
+      boxes: [
+        { kind: "tip", title: "Alternativa economica: l'autobus", list: [
+          "**Green Bus** da Chiang Rai Bus Terminal 2, quasi ogni ora. VIP 400 THB, Express 290 THB, circa 3h20.",
+          "Partenze VIP utili: 14:30, 15:30, 16:30, 17:15, 18:00 (l'ultima arriva alle 21:20). Per il Sunday Walking Street prendete quella delle **16:30** (arrivo ~19:50).",
+          "Prenotazione su greenbusthailand.com o app, qualche giorno prima.",
+          "Arrivo al Chiang Mai Arcade Bus Terminal 3, a 4 km dalla città vecchia: songthaew rosso 50 THB a testa o Grab."] }
+      ],
+      links: [{ label: "Green Bus Thailand", url: "https://www.greenbusthailand.com" }, { label: "12Go Asia", url: "https://12go.asia" }] },
+
+    { id: "d6", date: "2026-11-30", color: "nord", title: "Chiang Mai: un giorno pieno, due modi di usarlo", place: "Chiang Mai",
+      items: [
+        ["", "Avete una giornata sola. Scegliete **una** delle opzioni: farle tutte significa farle male."],
+        ["Opzione A", "**Templi, montagna e città** (la più semplice)."],
+        ["07:30", "**Monk's Trail e Wat Pha Lat**: sentiero di 45 minuti nella foresta, segnato da fasce arancioni, fino a un tempio nascosto fra le rocce e una cascata. Gratuito, quasi vuoto al mattino, il posto più bello di Chiang Mai. Parte dalla fine di Suthep Road."],
+        ["10:00", "**Doi Suthep** · 30 THB. Dal Wat Pha Lat a piedi (1h30, ripido) o songthaew (50 THB). 306 gradini con i naga, chedi dorato e vista sulla valle."],
+        ["13:00", "**Nimmanhaemin**, quartiere di caffè e università. Pranzo, poi One Nimman."],
+        ["15:30", "Città vecchia: **Wat Chedi Luang** (50 THB, chedi del '400 mezzo crollato per un terremoto) e **Wat Phra Singh** (50 THB). In mezzo, massaggio thai da 250–350 THB l'ora."],
+        ["19:00", "Cena e Night Bazaar, oppure (meglio) **Chang Phuak Gate Night Market**, dove mangiano i thailandesi (celebre la \"Cowboy Hat Lady\" col maiale stufato)."],
+        ["Opzione B", "**Santuario degli elefanti** (giornata intera). Il bagno con gli elefanti è marketing e li stressa: scegliete programmi di sola osservazione, senza cavalcate né spettacoli."],
+        ["", "**Elephant Nature Park** (programma \"Single Day Visit\", solo osservazione, ~2.500 THB, prenotare con settimane di anticipo). **Chang Chill** (Mae Wang, modello \"hands-off\", gruppi piccoli, ~2.400 THB). **BEES** (elefanti anziani in pensione, pochissimi visitatori)."],
+        ["", "Diffidate del nome \"sanctuary\": se sul sito ci sono foto di turisti che lavano gli elefanti, non lo è."],
+        ["Opzione C", "**Solo divertimento.** **Bua Thong \"Sticky Waterfalls\"**: cascata su calcare non scivoloso da risalire a piedi nudi, gratuita, a un'ora dalla città, praticamente solo thailandesi. **Grand Canyon Water Park**: cava allagata con tuffi e gonfiabili, 20 minuti dalla città, ~500 THB."]
+      ],
+      boxes: [
+        { kind: "warn", title: "Preparate gli zaini stasera", text: "Domani volo alle **11:40** da Chiang Mai: in aeroporto per le 10:00, quindi **partenza dall'hotel alle 09:30**. CNX è a 15 minuti dalla città vecchia. Da qui il clima cambia: al sud 31–33 °C con umidità alta, felpe e pantaloni lunghi in fondo allo zaino." }
+      ] },
+
+    { id: "d7", date: "2026-12-01", color: "lago", title: "Chiang Mai → Phuket → Khao Sok", place: "Chiang Mai → Khao Sok",
+      items: [
+        ["09:30", "Partenza per CNX. Volo **11:40 → 13:50**."],
+        ["14:15", "Uscita da Phuket HKT. Non entrate a Phuket città: l'aeroporto è a nord dell'isola, sulla strada per Khao Sok."],
+        ["14:30–18:00", "Trasferimento a Khao Sok: 3h–3h30, 160 km. **Minivan privato da 10 posti** (Toyota Commuter): 3.500–4.500 THB a veicolo, cioè 450–560 THB a testa, contro i 700–900 THB di un posto su van condiviso. Prenotate su 12Go, GetYourGuide o col vostro alloggio, che quasi sempre organizza il transfer."],
+        ["18:00", "Arrivo a **Khlong Sok**, il villaggio all'ingresso del parco: un'unica strada con guesthouse, ristorantini e agenzie. Buio verso le 18:15."],
+        ["Sera", "Cena al villaggio e conferma del tour del lago per domani (con 8 persone in alta stagione dovete averlo già prenotato)."]
+      ],
+      boxes: [
+        { kind: "info", title: "Dove dormire a Khlong Sok", text: "Dai bungalow in bambù sul fiume a 600 THB alle treehouse a 2.000–3.500 THB. Nomi affidabili nella fascia media: Khao Sok Riverside Cottages, Art's Riverview Jungle Lodge (macachi sul fiume al mattino), Khao Sok Paradise Resort, Our Jungle Camp. Chiedete un alloggio sul fiume Sok." },
+        { kind: "warn", title: "Poco segnale", text: "A Khao Sok il segnale è debole e sul lago non c'è. Scaricate le mappe offline e avvisate a casa che sarete irraggiungibili per 24 ore." }
+      ] },
+
+    { id: "d8", date: "2026-12-02", color: "lago", title: "Lago Cheow Lan · notte sulle case galleggianti", place: "Parco di Khao Sok",
+      items: [
+        ["", "Il giorno più bello del viaggio, con ogni probabilità. Bacino del 1987 dentro il parco: pinnacoli calcarei di 300 metri che escono dall'acqua verde smeraldo. Le raft house sono bungalow di legno ancorati alla riva, con la porta sull'acqua."],
+        ["08:00", "Pick-up al villaggio, 65 km fino al molo di Ratchaprapha (1h15)."],
+        ["09:30", "Ingresso al parco (**320 THB** a testa, solo contanti) e tassa molo (40 THB). Poi 1h–1h30 di longtail attraverso il lago: è già l'attrazione."],
+        ["11:00", "Arrivo alla raft house, sistemazione, pranzo thai su un pontile."],
+        ["Pomeriggio", "Kayak fra i pinnacoli (di solito inclusi), nuotate dal pontile, trekking verso la Nam Talu Cave o la Coral Cave (con guida, si cammina nell'acqua: scarpe che si possono bagnare)."],
+        ["18:00", "Cena, poi **night safari** in barca con le torce: civette, cervi latranti, a volte elefanti selvatici."],
+        ["21:00", "La corrente nelle raft house si spegne quasi ovunque fra le 21:00 e le 22:00. Power bank carica e torcia frontale. Silenzio e stelle."]
+      ],
+      boxes: [
+        { kind: "warn", title: "Prenotare il lago: ALTA STAGIONE", list: [
+          "Dicembre è il picco e i posti sono limitati per legge: **prenotate subito**.",
+          "Formula standard: pacchetto **2 giorni / 1 notte** (transfer, barca, pasti, kayak, attività, notte in raft house): 2.500–3.500 THB a testa in fascia media, più 320 THB di ingresso.",
+          "Il fai-da-te costa di più per un gruppo piccolo e rischia di non trovare posto. Con 8 persone chiedete una raft house in esclusiva.",
+          "Fasce: Khao Sok Eco Raft e Panvaree economiche; 500 Rai Floating Resort la più spettacolare (300 €+ a bungalow); Raft House e Panvaree The Greenery nel mezzo.",
+          "Sul lago portate solo uno zainetto per una notte: gli zaini grandi restano in deposito al villaggio."] }
+      ] },
+
+    { id: "d9", date: "2026-12-03", color: "sud", title: "Alba sul lago → trasferimento ad Ao Nang", place: "Khao Sok → Ao Nang",
+      items: [
+        ["06:00", "**Safari all'alba**, la parte migliore: nebbia sull'acqua, pinnacoli a strati, gibboni dalle guance bianche e buceri. Non saltatelo per dormire."],
+        ["08:00", "Colazione, ultimo bagno, si smonta."],
+        ["10:30–12:30", "Rientro al molo e al villaggio."],
+        ["13:30–16:30", "Trasferimento ad Ao Nang (Krabi), circa 3 ore. Minivan condiviso ~500–600 THB a testa, oppure privato 4.000–5.000 THB per il gruppo. Prenotatelo il giorno prima insieme al tour."],
+        ["17:00", "Check-in ad Ao Nang: cittadina balneare senza pretese, la usiamo come base logistica."],
+        ["Sera", "Pesce alla griglia sulla beach road (scegliete il pesce dal ghiaccio e fatevelo pesare prima). Più tranquilla: Nopparat Thara, la spiaggia a nord."]
+      ],
+      boxes: [
+        { kind: "info", title: "Alternativa: dormire a Railay", list: [
+          "Railay è una penisola isolata dalle falesie: si raggiunge solo in longtail da Ao Nang (15 min, 100–150 THB a testa, partono con 8 passeggeri: voi lo siete già).",
+          "Si ha Phra Nang Beach al tramonto senza nessuno. Gli ultimi longtail regolari partono verso le 18:00–18:30: arrivando alle 17:00 fate in tempo.",
+          "Svantaggio: alloggi economici solo a Railay East (fronte mangrovia) e il giorno dopo si rifà la barca con 8 zaini."] }
+      ] },
+
+    { id: "d10", date: "2026-12-04", color: "sud", title: "Mattina a Railay → traghetto per Koh Phi Phi", place: "Ao Nang → Phi Phi",
+      items: [
+        ["08:00", "Longtail da Ao Nang a **Railay West** (15 min, 100–150 THB). Zaini grandi in deposito in hotel."],
+        ["08:30", "**Phra Nang Beach**: una delle spiagge più belle della Thailandia, sabbia bianchissima, falesia con stalattiti e la grotta della principessa (santuario della fertilità, piena di falli votivi). Alle 8:30 è quasi vuota."],
+        ["09:30", "**Railay Viewpoint e Lagoon**: salita ripidissima di 20 minuti con corde e radici, nel fango. Il viewpoint ripaga; la laguna è un'ulteriore discesa a strapiombo, solo con scarpe con presa. Non in infradito."],
+        ["11:00", "Per chi non vuole arrampicarsi: kayak sotto le falesie (200 THB/ora) o Tonsai Beach, la spiaggia dei climber."],
+        ["12:00", "Ritorno ad Ao Nang, zaini, pranzo veloce."],
+        ["13:30 / 14:40", "**Traghetto per Phi Phi** da Nopparat Thara o Ao Nang: traghetto ~2h (615 THB) o speedboat ~1h (830–900 THB). Ultima partenza utile ~14:40, ma gli orari cambiano ogni stagione: prenotate online (Ferryhopper, 12Go, Phi Phi Cruiser) qualche giorno prima."],
+        ["15:45", "Arrivo a Tonsai Pier. Tassa di sbarco 20–40 THB. A Phi Phi non ci sono auto."],
+        ["Sera", "Tramonto e cena. Se dormite a Long Beach, longtail da Tonsai 150–200 THB a testa; l'ultima corsa comoda è verso le 22:00 (dopo si contratta)."]
+      ],
+      boxes: [
+        { kind: "info", title: "Dove dormire a Phi Phi", list: [
+          "**Tonsai Village**: il centro, comodo ma bar e musica fino alle 2.",
+          "**Long Beach (Hat Yao)** — consigliata: 10 min di longtail o 25 a piedi da Tonsai, sabbia più bella, corallo vivo a 20 metri dalla riva (snorkeling senza barca).",
+          "**Loh Dalum Bay**: baia nord con i beach party.",
+          "Phi Phi è cara e in dicembre si riempie: prenotate presto, soprattutto 4 camere insieme."] }
+      ],
+      links: [{ label: "Ferryhopper", url: "https://www.ferryhopper.com" }, { label: "12Go Asia", url: "https://12go.asia" }] },
+
+    { id: "d11", date: "2026-12-05", color: "sud", title: "Phi Phi · giro in longtail privato all'alba", place: "Koh Phi Phi",
+      items: [
+        ["", "La giornata in cui vale la pena spendere bene. I tour di gruppo arrivano a Maya Bay alle 10–11, 40 persone a barca. Voi siete 8: **longtail privato con skipper** per tutto il giorno, 3.500–5.000 THB la barca (450–620 THB a testa), orari decisi da voi."],
+        ["06:00", "Partenza. Sì, alle sei: è la differenza fra Maya Bay e una fila di turisti."],
+        ["06:45", "**Maya Bay** · 400 THB di ingresso al parco nazionale. Le barche attraccano a Loh Sama Bay, dietro l'isola, e si arriva con una passerella. **Non si può nuotare** (acqua al massimo fino al ginocchio, i ranger sono severi). Circa un'ora."],
+        ["08:00", "**Pileh Lagoon**: piscina naturale verde chiusa da pareti verticali. Qui si nuota, e prestissimo siete quasi soli."],
+        ["09:00", "**Viking Cave** (nidi di rondine, solo da fuori) e **Loh Samah Bay**, ottimo snorkeling."],
+        ["10:00", "**Monkey Beach**: carina, ma i macachi sono aggressivi e rubano. Niente cibo a vista, non allungate la mano (rischio rabbia)."],
+        ["11:00", "**Bamboo Island**, inclusa nella stessa tassa: sabbia bianca, acqua turchese e snorkeling migliore che a Maya. Pranzo al sacco o rientro."],
+        ["15:00", "Rientro, riposo, poi **Phi Phi Viewpoint** (30 THB, 20 minuti di scalinata): la foto classica dell'istmo."],
+        ["Sera", "Fire show a Loh Dalum, bucket di Sangsom, Slinky Bar e Ibiza: molto turistico e giovane. Alternativa: cena a Tonsai e drink a Long Beach, atmosfera tutta diversa."]
+      ],
+      boxes: [
+        { kind: "tip", title: "Nota su Maya Bay", text: "La baia è rimasta chiusa quattro anni (2018–2022) per far ricrescere il corallo, e ogni anno richiude dal 1 agosto al 30 settembre. Le regole di oggi sono il motivo per cui è ancora bella: rispettatele. Il biglietto da 400 THB vale tutta la giornata e copre anche Bamboo Island e Pileh: conservatelo." }
+      ] },
+
+    { id: "d12", date: "2026-12-06", color: "sud", title: "Phi Phi → Koh Lanta", place: "Phi Phi → Koh Lanta",
+      items: [
+        ["Mattina", "Ultimo bagno a Long Beach, colazione, check-out."],
+        ["11:30 / 13:30", "**Traghetto Tonsai → Saladan** (Koh Lanta): 1h–1h30 in traghetto, 30–40 min in speedboat, 400–700 THB a testa. 2–4 partenze al giorno (Chaokoh, Andaman Wave Master, Tiger Line, Bundhaya): prenotate online."],
+        ["13:00–14:30", "Arrivo a Saladan, all'estremità nord dell'isola. Songthaew o taxi fino all'alloggio: 100–200 THB a testa."],
+        ["Pomeriggio", "Spiaggia e basta. Lanta è lunga 30 km: spiagge chilometriche, bar di legno sulla sabbia, ritmo lento."],
+        ["Tramonto", "Tutta la costa ovest guarda il tramonto. Beach bar: Why Not Bar, Feeling Bar, Same Same But Different (Kantiang Bay, il più bello e caro)."]
+      ],
+      boxes: [
+        { kind: "info", title: "Quale spiaggia a Koh Lanta", list: [
+          "**Long Beach / Phra Ae**: la più lunga e attrezzata, 15 min da Saladan. La più pratica.",
+          "**Klong Khong**: la più backpacker, bar e serate.",
+          "**Klong Nin** — consigliata: la più bella per acqua e sabbia, paesino piccolo con ottimi ristoranti.",
+          "**Kantiang Bay**: remota e scenografica, serve lo scooter.",
+          "Con 8 persone cercate una **villa con piscina**: 6.000–9.000 THB a notte per 8 posti letto (20–28 € a testa)."] }
+      ] },
+
+    { id: "d13", date: "2026-12-07", color: "sud", title: "Koh Lanta · Koh Rok e Koh Haa", place: "Koh Lanta",
+      items: [
+        ["", "**Gita consigliata: Koh Rok + Koh Haa.** Lo snorkeling migliore del viaggio, isole disabitate dentro il parco nazionale di Mu Koh Lanta, acqua trasparente su fondale bianco. Koh Haa ha cinque isolotti con grotte; Koh Rok due isole gemelle con una spiaggia da Maldive."],
+        ["Orari", "Pick-up 08:00, rientro 16:30–17:00. 45 min di speedboat fino a Koh Haa, altri 30 fino a Koh Rok."],
+        ["Costo", "1.600–2.000 THB a testa più 400 THB di ingresso al parco. Include pranzo, attrezzatura da snorkeling, frutta e acqua."],
+        ["Da sapere", "Il mare aperto può essere mosso: se soffrite il mal di mare prendete qualcosa un'ora prima. Rash guard o crema reef-safe: quattro ore in acqua bruciano chiunque."],
+        ["Prenota", "In qualsiasi agenzia dell'isola il giorno prima, o online (kohlanta.tours, GetYourGuide). Le barche migliori sono limitate a 20–25 persone."],
+        ["Alternativa", "**L'isola in scooter** (250–300 THB al giorno): Mu Koh Lanta National Park (200 THB, faro, sentiero, scimmie), **Lanta Old Town** (palafitte sull'acqua, zero folla), Khlong Chak Waterfall e grotta dei pipistrelli. Strada stretta con curve cieche: vedi \"Patenti e noleggi\" nella sezione Info."]
+      ],
+      boxes: [
+        { kind: "warn", title: "Stasera: conti e bagagli", text: "Domani è il giorno del rientro e il trasferimento a Trang è quello con più margine di errore del viaggio. Ultima occasione per massaggio thai (300 THB), souvenir e per finire i baht in contanti." }
+      ] },
+
+    { id: "d14", date: "2026-12-08", color: "bkk", title: "Koh Lanta → Trang → Bangkok", place: "Koh Lanta → Bangkok",
+      items: [
+        ["Mattina", "Colazione e ultimo bagno. Check-out entro le 11:00."],
+        ["10:00–10:30", "**Partenza per Trang** (non più tardi delle 10:30). 2h30–3h: ponte fra Lanta Yai e Lanta Noi, poi traghetto per auto fra Lanta Noi e la terraferma, che in alta stagione può avere code lunghe."],
+        ["", "Opzioni: minivan condiviso (08:00 e 12:00, 400–550 THB a testa) oppure **privato** diretto all'aeroporto, 3.000–3.500 THB (~400 THB a testa) con l'orario che volete. Con 8 persone e un volo da prendere: privato."],
+        ["13:00–13:30", "Arrivo a Trang città. Se siete in anticipo merita un'ora: moo yang (maiale croccante alla brace) e dim sum, mercato per nulla turistico."],
+        ["14:30", "Aeroporto di Trang (TST), minuscolo, check-in 2 ore prima. Volo **17:30 → DMK 18:55**."],
+        ["19:30", "Uscita da Don Mueang, Grab per l'hotel (45–60 min, 400–500 THB a veicolo)."],
+        ["21:00", "Ultima cena. Sukhumvit: Soi 38 o mercato di Klong Toey. Riverside: Asiatique o di nuovo Yaowarat."]
+      ],
+      boxes: [
+        { kind: "warn", title: "Il traghetto di Koh Lanta è il vero rischio del viaggio", list: [
+          "In alta stagione si sono registrate code di ore. Un ritardo qui significa perdere il volo per Bangkok, e con quello il volo di rientro del giorno dopo.",
+          "**Partite entro le 10:30.** Il margine di 4 ore su un volo delle 17:30 è prudenza, non esagerazione.",
+          "Chiedete all'alloggio o all'autista com'è il traghetto quella mattina: lo sanno sempre.",
+          "Per azzerare il rischio: barca diretta Koh Lanta → Koh Ngai → molo di Trang (Tiger Line / Satun Pakbara) che salta il traffico stradale. Parte da Saladan al mattino, in genere arriva al molo verso le 14:00–15:00, poi un'ora di van fino all'aeroporto. Verificate l'orario."] }
+      ] },
+
+    { id: "d15", date: "2026-12-09", color: "travel", title: "Bangkok → Vienna → Venezia", place: "Rientro",
+      items: [
+        ["Mattina", "Colazione con calma, ultimi acquisti: massaggio o mercato fino alle 09:30."],
+        ["10:00", "Partenza per **Suvarnabhumi (BKK, non Don Mueang)**. Grab 400–600 THB a veicolo, 45–75 min; oppure Airport Rail Link da Phaya Thai o Makkasan, 30 min e 45 THB, immune al traffico."],
+        ["11:00", "Check-in. Suvarnabhumi è enorme: 20 minuti solo per attraversarlo."],
+        ["Tax refund", "Negozi con insegna \"VAT Refund for Tourists\", almeno 2.000 THB per negozio e 5.000 THB in totale: si recupera il 7% di IVA. Prima del check-in far vistare i moduli P.P.10 all'ufficio doganale al 4° piano (con la merce a portata di mano)."],
+        ["14:00", "Volo per Vienna (~11h30), arrivo 19:35. Coincidenza per Venezia alle **21:10**, atterraggio 22:15."],
+        ["A casa", "Il jet lag verso ovest è più gentile, ma il giorno dopo sarete distrutti: non prendete impegni per il 10."]
+      ],
+      boxes: [] }
+  ],
+
+  transfers: {
+    head: ["Tratta", "Come", "Durata", "Costo"],
+    rows: [
+      ["26/11 · BKK → centro Bangkok", "Grab / taxi (2 veicoli)", "45–70 min", "~450 THB/auto"],
+      ["28/11 · Chatuchak → DMK", "Grab", "20–40 min", "~250 THB/auto"],
+      ["28/11 · CEI → Chiang Rai centro", "Taxi ufficiale", "20 min", "~200 THB/auto"],
+      ["29/11 · Chiang Rai → Chiang Mai", "Minivan privato tutto il giorno, oppure Green Bus VIP", "3h20 (+ giro templi)", "4.500–6.500 THB totale / 400 THB"],
+      ["01/12 · HKT → Khao Sok", "Minivan privato 10 posti", "3h–3h30", "3.500–4.500 THB totale"],
+      ["02/12 · Khao Sok → molo Ratchaprapha", "Incluso nel pacchetto lago", "1h15", "incluso"],
+      ["03/12 · Khao Sok → Ao Nang", "Minivan condiviso o privato", "~3h", "500–600 THB / 4.500 tot."],
+      ["04/12 · Ao Nang ⇄ Railay", "Longtail", "15 min", "100–150 THB"],
+      ["04/12 · Ao Nang → Koh Phi Phi", "Traghetto o speedboat", "2h / 1h", "615 / 850 THB"],
+      ["05/12 · Giro isole Phi Phi", "Longtail privato tutto il giorno", "06:00–15:00", "3.500–5.000 THB totale"],
+      ["06/12 · Phi Phi → Koh Lanta", "Traghetto o speedboat", "1h30 / 40 min", "400–700 THB"],
+      ["07/12 · Koh Rok + Koh Haa", "Speedboat organizzato", "08:00–17:00", "1.600–2.000 THB"],
+      ["08/12 · Koh Lanta → Trang TST", "Minivan privato (include traghetto auto)", "2h30–3h", "3.000–3.500 THB totale"],
+      ["08/12 · DMK → hotel Bangkok", "Grab (2 veicoli)", "45–60 min", "~450 THB/auto"],
+      ["09/12 · Bangkok → BKK", "Grab o Airport Rail Link", "45–75 / 30 min", "~500 THB/auto o 45 THB"]
+    ],
+    note: "Prezzi indicativi per persona salvo dove indicato. Cambio di riferimento: 1 € ≈ 38 THB."
+  },
+
+  rules: [
+    "**Il privato batte il condiviso.** Un minivan Toyota Commuter (9–10 posti) costa quanto 5–6 biglietti condivisi ma porta 8 persone porta a porta, senza il giro degli hotel. Vale per ogni transfer terrestre e per il giro in barca a Phi Phi.",
+    "**Prenotate i traghetti online, in anticipo.** Dicembre è alta stagione piena: 8 posti insieme all'ultimo momento sono rischiosi. Usate 12Go Asia, Ferryhopper o Phantip.",
+    "**Un \"capo logistica\" a rotazione**, un giorno a testa: controlla orari, prenotazioni e conto alla rovescia. Senza, si perde un'ora al giorno.",
+    "**Cassa comune.** Gruppo su Splitwise o Tricount il primo giorno e una cassa in contanti per taxi, barche, pranzi e mance.",
+    "**Su ogni barca i bagagli si bagnano.** Sacchi impermeabili o almeno sacchi della spazzatura resistenti dentro lo zaino.",
+    "**Sempre contanti addosso.** Parchi nazionali (320 e 400 THB), longtail, songthaew, mercati e molti ristorantini: solo contanti. Niente bancomat sul lago di Khao Sok e a Railay (c'è ma con commissioni assurde).",
+    "**Contate sempre 8 teste** prima di ogni partenza di barca, van o volo.",
+    "**Screenshot di tutto**: biglietti, prenotazioni, QR del TDAC, indirizzo dell'hotel in thailandese (fatevelo scrivere alla reception). A Khao Sok e su alcune isole non c'è segnale."
+  ],
+
+  budget: {
+    head: ["Voce", "Fascia media", "Note"],
+    rows: [
+      ["Alloggi (13 notti)", "340 – 460 €", "Doppie/triple 3★ o ville condivise"],
+      ["Trasferimenti e traghetti", "130 – 170 €", "Con privati come consigliato"],
+      ["Tour ed escursioni", "190 – 250 €", "Khao Sok ~80 €, Phi Phi ~15 €, Koh Rok ~55 €, Chiang Rai ~20 €"],
+      ["Ingressi e tasse parchi", "50 – 65 €", "Templi, Chiang Rai, parchi nazionali"],
+      ["Cibo e bevande", "280 – 420 €", "20–30 € al giorno"],
+      ["SIM, assicurazione, extra", "70 – 110 €", ""],
+      ["TOTALE a testa", "1.060 – 1.475 €", "Voli internazionali e interni esclusi"]
+    ],
+    note: "Con scelte più spartane si scende sotto i 900 €; con resort e speedboat privati si supera facilmente i 2.000 €."
+  },
+
+  packing: {
+    intro: "Uno zaino grande in stiva, ma non riempitelo: in Thailandia si compra tutto, il bucato costa 40–60 THB al chilo in giornata. Puntate a **12–14 kg**, più uno zainetto da 20–30 litri per le gite in barca e la notte sul lago.",
+    climates: [
+      "**Sud e mare** (10 giorni su 14): 31–33 °C, umidità alta. Roba leggerissima.",
+      "**Nord** (3 giorni): 28 °C di giorno ma 14–17 °C all'alba e la sera. Felpa vera e pantaloni lunghi.",
+      "**Templi e aria condizionata**: spalle e ginocchia coperte; su bus e aerei fa freddo."
+    ],
+    groups: [
+      { title: "Abbigliamento", items: [
+        "6–7 magliette leggere (tecniche: il cotone pesante non asciuga)", "2 canottiere", "3–4 paia di pantaloncini",
+        "1 paio di pantaloni lunghi leggeri (templi, sera al nord, zanzare)", "1 felpa o pile", "1 giacca antipioggia leggerissima o poncho",
+        "2 costumi da bagno", "1 maglietta a maniche lunghe da bagno (rash guard) per Koh Rok", "Biancheria per 7 giorni, calzini 3–4 paia",
+        "1 camicia/maglietta decente per i rooftop di Bangkok (niente pantaloncini né infradito)"] },
+      { title: "Scarpe (tre paia)", items: [
+        "Infradito o ciabatte da mare (comprarle lì)", "Scarpe da ginnastica leggere o trail (Monk's Trail, Railay, Khao Sok)",
+        "Sandali o scarpe che possono bagnarsi (grotte di Khao Sok, barche, scogli)"] },
+      { title: "Attrezzatura", items: [
+        "Dry bag 10–20 l (almeno 2–3 nel gruppo)", "Custodia impermeabile per il telefono", "Power bank 10.000–20.000 mAh (nel bagaglio a mano, mai in stiva)",
+        "Adattatore universale con USB (le spine italiane a tre poli NON entrano)", "Torcia frontale", "Asciugamano in microfibra",
+        "Maschera e boccaglio personali (facoltativo)", "Lucchetto piccolo", "Borraccia (distributori a 1 THB/litro)", "Rain cover per lo zaino",
+        "Occhiali da sole, cappello, cordino", "Packing cubes"] },
+      { title: "Documenti", items: [
+        "Passaporto valido almeno fino al 26 maggio 2027", "QR del TDAC (screenshot + stampa)", "Biglietti aerei andata E ritorno stampati",
+        "Polizza assicurativa con numero della centrale operativa H24", "Patente italiana + permesso internazionale (se si guida)",
+        "Tessera sanitaria e carta d'identità", "Fotocopie di passaporto e polizza in luogo separato + copia su cloud",
+        "2 carte di circuiti diversi (Visa e Mastercard), tenute separate; avvisare la banca"] }
+    ],
+    nogo: [
+      "**Sigarette elettroniche e liquidi**: illegali (importazione, possesso, uso). Sequestro in aeroporto, multe fino a 30.000 THB, casi reali di fermo.",
+      "**Droni**: vanno registrati presso CAAT e NBTC; vietati comunque nei parchi nazionali (Khao Sok, Phi Phi, Koh Rok).",
+      "**Creme solari con ossibenzone e octinoxato**: vietate nei parchi marini, multa fino a 100.000 THB. Solo reef-safe (zinco/titanio).",
+      "Troppi vestiti, phon, asciugamano grande, libri di carta."
+    ]
+  },
+
+  info: [
+    { icon: "🛂", title: "Documenti, visto e TDAC", blocks: [
+      { h: "Visto e ingresso", ul: [
+        "I cittadini italiani entrano senza visto per turismo (esenzione attuale **60 giorni**).",
+        "Il 19 maggio 2026 il governo thailandese ha approvato la riduzione a 30 giorni per i paesi UE. Non ancora in vigore, ma potrebbe esserlo entro novembre. Per voi non cambia nulla: 14 giorni rientrano in entrambi i casi.",
+        "**Passaporto**: validità residua di almeno 6 mesi all'ingresso (quindi fino al **26 maggio 2027**) e almeno una pagina libera. Verificatelo oggi.",
+        "Prova del volo di uscita: tenete stampato il biglietto BKK → Vienna del 9/12.",
+        "Disponibilità economica: formalmente 20.000 THB a persona (~530 €). Controllo raro.",
+        "Nessuna tassa d'ingresso ai turisti è attualmente applicata."] },
+      { h: "TDAC — carta di sbarco digitale (obbligatoria)", ul: [
+        "Dal 1 maggio 2025 sostituisce il modulo TM6. Sito ufficiale e UNICO: **tdac.immigration.go.th**, GRATUITO. Ignorate i siti che chiedono 15–40 €.",
+        "Da compilare nei 3 giorni (72 ore) prima dell'arrivo: **dal 23 novembre in poi**.",
+        "Servono: passaporto, dettagli del volo, indirizzo del primo alloggio, contatti. Ognuno compila il suo (c'è una funzione gruppi).",
+        "Riceverete un QR via email: screenshot E stampa.",
+        "Idea: farlo tutti e otto insieme durante lo scalo a Vienna (5 minuti a testa)."] }
+    ], links: [{ label: "TDAC ufficiale", url: "https://tdac.immigration.go.th" }, { label: "Viaggiare Sicuri", url: "https://www.viaggiaresicuri.it" }] },
+
+    { icon: "🛡️", title: "Assicurazione di viaggio", blocks: [
+      { p: "Non obbligatoria per l'ingresso, ma è la spesa più sensata del viaggio: un ricovero a Bangkok o Phuket vale migliaia di euro, un rimpatrio sanitario decine di migliaia." },
+      { ul: [
+        "Verificate: spese mediche con massimale alto (almeno 250.000 €), rimpatrio sanitario e soprattutto **guida di motocicli**. Molte polizze escludono gli incidenti in scooter o li coprono solo con patente A e permesso internazionale validi.",
+        "La tessera sanitaria europea non vale in Thailandia.",
+        "Compagnie usate dai viaggiatori italiani: Heymondo, Columbus, Nobis/Filo Diretto, Allianz Travel, World Nomads. Per 14 giorni 30–90 € a testa.",
+        "Meglio una polizza di gruppo (o singole con lo stesso operatore): una sola centrale operativa da chiamare."] }
+    ] },
+
+    { icon: "💉", title: "Salute, vaccini e farmaci", blocks: [
+      { h: "Vaccinazioni", ul: [
+        "Nessuna vaccinazione obbligatoria dall'Italia.",
+        "**Epatite A**: quella che conta (cibo e acqua, mangerete per strada). Già la prima dose protegge.",
+        "**Tifo**: consigliato con street food e zone rurali.",
+        "**Tetano-difterite-pertosse**: verificate il richiamo (ogni 10 anni).",
+        "**Epatite B**: molti l'hanno già fatta da bambini.",
+        "**Rabbia (pre-esposizione)**: da valutare; cani randagi e macachi sono ovunque.",
+        "**Encefalite giapponese**: di norma non indicata per 2 settimane turistiche.",
+        "Centro vaccinazioni internazionali della ASL con almeno **6–8 settimane** di anticipo, andateci insieme."] },
+      { h: "Malaria e dengue", ul: [
+        "**Malaria**: nessuna profilassi indicata per questo itinerario.",
+        "**Dengue**: il rischio reale, anche in città e isole. Nessuna profilassi; la zanzara punge di giorno, soprattutto all'alba e al tramonto. Repellente DEET 30–50% o icaridina 20% ogni 4–6 ore, maniche lunghe la sera.",
+        "Dopo il rientro, febbre alta, dolori articolari e mal di testa dietro gli occhi entro 2 settimane: medico, e dite che siete stati in Thailandia. In caso di sospetta dengue **solo paracetamolo**, no aspirina né ibuprofene."] },
+      { h: "Kit medicinali del gruppo (uno solo, diviso in due zaini)", table: {
+        head: ["Categoria", "Cosa portare", "Perché"],
+        rows: [
+          ["Dolore e febbre", "Paracetamolo, ibuprofene", "Con sospetta dengue SOLO paracetamolo"],
+          ["Intestino", "Loperamide, fermenti lattici, sali reidratanti", "I sali contano più dell'Imodium"],
+          ["Antibiotico", "Uno ad ampio spettro prescritto dal medico", "Diarrea severa o infezioni"],
+          ["Stomaco", "Antiacido, antinausea", "Barche mosse verso Koh Rok"],
+          ["Pelle", "Cortisone, antistaminico, Betadine, crema antibiotica", "Punture, meduse, tagli di corallo"],
+          ["Medicazione", "Cerotti impermeabili, garze, benda elastica", "Tagli di corallo e calcare"],
+          ["Protezione", "Solare 50+ reef-safe, doposole, repellente", ""],
+          ["Altro", "Colliri, tappi per orecchie, farmaci personali con ricetta tradotta", ""]
+        ] } },
+      { h: "Da ricordare", ul: [
+        "Tagli di corallo e ricci si infettano in poche ore: disinfettate subito e a fondo.",
+        "Morso o graffio di animale: acqua e sapone per 15 minuti e **subito in ospedale** per la profilassi antirabbica.",
+        "Ospedali di riferimento: Bangkok Hospital e Bumrungrad (Bangkok), Bangkok Hospital Phuket, Krabi Nakharin International. Chiamate prima la centrale dell'assicurazione.",
+        "Acqua: mai dal rubinetto. Il ghiaccio nei locali è industriale (cilindrico col buco) ed è sicuro.",
+        "Street food: sì, ma scegliete i banchi con la fila di gente del posto e cottura a vista."] }
+    ] },
+
+    { icon: "📶", title: "SIM e connettività", blocks: [
+      { ul: [
+        "**AIS** ha la migliore copertura (anche isole e zone rurali), poi TrueMove H e DTAC. A Koh Lanta e Khao Sok la differenza si sente.",
+        "**SIM fisica**: 8–30 giorni, dati illimitati o 30–50 GB, 300–800 THB (8–21 €). In aeroporto è comoda ma 20–30% più cara; serve il passaporto (10–20 minuti di registrazione).",
+        "**eSIM** (Airalo, Holafly, Saily, Nomad): 10–25 € per 15 giorni, attiva appena atterrati e tiene il numero italiano per SMS e verifiche bancarie. Verificate che il telefono la supporti.",
+        "Roaming fuori UE: costi folli, disattivate i dati all'atterraggio.",
+        "Con 8 persone bastano 3–4 SIM/eSIM con tanti dati e tethering per gli altri.",
+        "Wi-Fi quasi ovunque, ma lento sulle isole e assente sul lago di Khao Sok."] }
+    ] },
+
+    { icon: "🛵", title: "Patenti e noleggi", blocks: [
+      { kind: "warn", title: "Il punto critico", text: "La patente italiana da sola NON basta: serve patente originale **PIÙ** permesso internazionale (Convenzione di Vienna 1968). Inoltre la patente B permette lo scooter 125cc solo in Italia: per le due ruote in Thailandia serve la **patente A** (A1/A2/A) e il permesso internazionale con categoria A. Senza, la multa è modesta (500–2.000 THB) ma l'assicurazione di viaggio e del noleggio NON paga nulla in caso di incidente. Il permesso costa ~50–60 € e richiede alcune settimane (Motorizzazione o ACI): muoversi entro ottobre." },
+      { h: "Noleggio scooter", ul: [
+        "200–300 THB al giorno a Koh Lanta e Chiang Mai. Benzina 40–45 THB/litro.",
+        "**Non lasciate MAI il passaporto in cauzione.** Cauzione in contanti (2.000–3.000 THB) o fotocopia. Se insistono per l'originale, cambiate noleggio.",
+        "Fotografate e filmate il mezzo da tutti i lati prima di partire, con il noleggiatore presente.",
+        "Casco sempre, per tutti e due (obbligatorio, e la Thailandia ha uno dei tassi di mortalità stradale più alti al mondo, in larga parte su due ruote).",
+        "Mai guidare dopo aver bevuto: è la prima causa di incidenti gravi fra i turisti.",
+        "Si guida a sinistra: primi chilometri con calma."] },
+      { h: "Auto o van", ul: [
+        "Per questo itinerario non serve: il minivan con autista costa poco più e toglie il problema di guida a sinistra, parcheggi e traghetti.",
+        "Se volete un'auto: patente B + permesso internazionale, età minima di solito 21–23, carta di credito del guidatore. Compagnie affidabili: Avis, Budget, Thai Rent A Car."] }
+    ] },
+
+    { icon: "💶", title: "Soldi", blocks: [
+      { ul: [
+        "Valuta: baht (THB). **1 € ≈ 38 THB.** Regola mentale: togli uno zero e dividi per 4 (100 THB ≈ 2,60 €).",
+        "**Bancomat**: commissione fissa di 220 THB a prelievo oltre a quella della banca. Prelevate 10.000–20.000 THB e poche volte; meglio una persona per volta a rotazione, con la somma nella cassa comune.",
+        "**Carte**: accettate in hotel, ristoranti medio-grandi e centri commerciali; inutili per mercati, longtail, songthaew, parchi. Tenete 2.000–3.000 THB in contanti a testa.",
+        "Carta senza commissioni sul cambio (Revolut, N26, Wise). Al bancomat scegliete SEMPRE \"addebita in THB\", mai in EUR.",
+        "Cambio contanti: SuperRich (Bangkok) ha tassi migliori di banche e aeroporti.",
+        "Mance non obbligatorie: 20–50 THB dopo un massaggio, 100–200 THB per un autista o guida per una giornata intera."] }
+    ] },
+
+    { icon: "⚖️", title: "Leggi, galateo e truffe", blocks: [
+      { h: "Leggi che non immaginate", ul: [
+        "**Sigarette elettroniche**: illegali (importazione, vendita, possesso). Sequestro e multe fino a 30.000 THB.",
+        "**Cannabis**: dal 2025 la vendita è solo medica con prescrizione; l'uso ricreativo non è legale e fumare in pubblico è sanzionabile. State alla larga.",
+        "**Droghe**: pene durissime anche per il semplice possesso; controlli ai party a Phi Phi e alle isole.",
+        "**Lesa maestà**: criticare o mancare di rispetto alla famiglia reale è un reato con pene detentive, anche per stranieri, anche online.",
+        "**Alcol**: dal 2026 vendita nei negozi dalle 11:00 a mezzanotte (la fascia 14:00–17:00 è stata abolita a dicembre 2025). Vietata in aeroporti, stazioni, templi e distributori.",
+        "**Fumo**: vietato su molte spiagge (multe fino a 100.000 THB) e in luoghi pubblici chiusi."] },
+      { h: "Galateo", ul: [
+        "Nei templi: spalle e ginocchia coperte, scarpe fuori, cappello via. Mai voltare le spalle a un Buddha per una foto, mai salire su una statua. Le donne non toccano i monaci né passano loro oggetti direttamente.",
+        "La testa è sacra (non toccatela a nessuno), i piedi impuri: non puntarli verso persone o immagini sacre.",
+        "Il **wai** (mani giunte, leggero inchino) è il saluto: ricambiatelo.",
+        "Non alzate la voce: far \"perdere la faccia\" è la cosa peggiore. Si risolve tutto sorridendo. *Mai pen rai*.",
+        "Si contratta nei mercati e con i tuk-tuk, sorridendo; non nei negozi a prezzo esposto, nei 7-Eleven e nei ristoranti.",
+        "Effusioni in pubblico poco apprezzate; il topless in spiaggia è vietato."] },
+      { h: "Truffe più comuni", ul: [
+        "\"Il tempio oggi è chiuso\": non lo è mai.",
+        "Tassametro rotto: usate Grab o Bolt.",
+        "Graffio sullo scooter/jet ski: fotografate tutto, non lasciate il passaporto. I jet ski a Phuket e Patong sono la truffa più aggressiva: non noleggiateli.",
+        "Il \"tour operator amico\" per strada: prenotate in hotel, agenzie con vetrina o online.",
+        "Bar a Patong/Bangkok con conto a tre cifre: se qualcuno vi invita per strada, sarà una rapina."] }
+    ] },
+
+    { icon: "🌤️", title: "Meteo e mare a dicembre", blocks: [
+      { ul: [
+        "**Nord**: stagione migliore, 28–30 °C di giorno, 14–17 °C all'alba, praticamente zero pioggia.",
+        "**Sud e Andamane**: inizio dell'alta stagione secca, 31–33 °C, mare calmo e trasparente, pioggia rara e breve. Periodo migliore per Phi Phi, Lanta e Koh Rok, e proprio per questo il più affollato e caro.",
+        "**Sole**: UV estremo fra le 11:00 e le 15:00. Ci si brucia in 20 minuti anche con cielo velato.",
+        "**Alba e tramonto**: circa 06:20 e 18:00 in tutto il paese, tutto l'anno. Fa buio presto e all'improvviso."] }
+    ] },
+
+    { icon: "📱", title: "App da scaricare", blocks: [
+      { ul: [
+        "**Grab** (e Bolt): taxi e consegne in tutta la Thailandia",
+        "**12Go Asia**: treni, bus, traghetti, minivan in un posto solo",
+        "**Google Maps** con mappe offline (indispensabile a Khao Sok)",
+        "**Google Translate** con thailandese offline e fotocamera per i menù",
+        "**Agoda**: in Asia spesso prezzi migliori di Booking",
+        "**Splitwise** o Tricount: i conti in otto",
+        "**Ferryhopper**: orari traghetti aggiornati",
+        "**XE Currency**: cambio offline"] }
+    ] },
+
+    { icon: "🆘", title: "Numeri e contatti utili", blocks: [
+      { table: {
+        head: ["Cosa", "Contatto", "Note"],
+        rows: [
+          ["Emergenze generali", "191", "Polizia"],
+          ["Ambulanza / emergenza medica", "1669", "Gratuito"],
+          ["Tourist Police", "1155", "Parlano inglese: il numero per qualsiasi problema da turista"],
+          ["Vigili del fuoco", "199", ""],
+          ["Ambasciata d'Italia a Bangkok", "+66 2 250 4970", "27 South Sathorn Rd. Emergenze fuori orario: numero di reperibilità sul sito ambbangkok.esteri.it"],
+          ["Unità di crisi Farnesina", "+39 06 36225", "Attiva H24 dall'Italia"],
+          ["Registrazione viaggio", "dovesiamonelmondo.it", "Registratevi tutti prima di partire"],
+          ["TDAC", "tdac.immigration.go.th", "Unico sito ufficiale, gratuito"]
+        ] } }
+    ], links: [{ label: "Dove siamo nel mondo", url: "https://www.dovesiamonelmondo.it" }, { label: "Ambasciata d'Italia a Bangkok", url: "https://ambbangkok.esteri.it" }] }
+  ],
+
+  todo: [
+    "Controllare la scadenza dei passaporti (validi almeno fino al 26 maggio 2027).",
+    "Prenotare il pacchetto 2 giorni / 1 notte sul lago Cheow Lan (dicembre è il picco, posti limitati per legge).",
+    "Prenotare gli alloggi di Phi Phi e Koh Lanta (4 camere insieme spariscono presto).",
+    "Fissare l'appuntamento al centro vaccinazioni internazionali della ASL entro settembre.",
+    "Chi vuole guidare uno scooter: verificare la patente A e richiedere il permesso internazionale (4–6 settimane).",
+    "Verificare il bagaglio in stiva incluso sui 3 voli interni."
+  ]
+};
+
+/* =====================================================================
+   DA QUI IN POI: codice della pagina (non serve toccarlo)
+   ===================================================================== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+const COL = { bkk: 'var(--bkk)', nord: 'var(--nord)', lago: 'var(--lago)', sud: 'var(--sud)', travel: 'var(--travel)' };
+const REGIONI = [['bkk', 'Bangkok'], ['nord', 'Nord'], ['lago', 'Giungla'], ['sud', 'Andamane'], ['travel', 'In volo']];
+const MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];
+const GG = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
+const SECTIONS = [
+  ['viaggio', 'Anteprima', 'เส้นทาง'], ['giorni', 'Giorni', 'รายวัน'], ['spostamenti', 'Muoversi', 'การเดินทาง'],
+  ['zaino', 'Zaino', 'เตรียมกระเป๋า'], ['info', 'Info', 'ข้อมูลที่ควรรู้']
+];
+const parse = iso => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); };
+const isoToday = () => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`; };
+const dayById = id => TRIP.days.find(d => d.id === id);
+const TODAY = isoToday();
+const todayDay = TRIP.days.find(d => d.date === TODAY);
+const safe = fn => { try { return fn(); } catch (e) { return null; } };
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmtDay = d => { const dt = parse(d.date); return { g: GG[dt.getDay()], n: dt.getDate(), m: MESI[dt.getMonth()], mm: String(dt.getMonth() + 1).padStart(2, '0') }; };
+const shortPlace = d => d.place.split(' → ').pop();
+const heading = (id, title, sub) => { const s = SECTIONS.find(x => x[0] === id); return `<div class="sh rv"><div class="th">${s[2]}</div><h2>${title}</h2>${sub ? `<p>${sub}</p>` : ''}</div>`; };
+
+const linkBtns = ls => ls && ls.length ? `<div class="pills links">${ls.map(l => `<a class="pill" target="_blank" rel="noopener" href="${esc(l.url)}">${esc(l.label)} ↗</a>`).join('')}</div>` : '';
+const box = b => `<div class="box ${b.kind || 'info'}">${b.title ? `<h4>${md(b.title)}</h4>` : ''}${b.text ? `<p>${md(b.text)}</p>` : ''}${b.list ? `<ul>${b.list.map(x => `<li>${md(x)}</li>`).join('')}</ul>` : ''}</div>`;
+const table = t => {
+  const rest = t.head.slice(1);
+  return t.rows.map(r => {
+    const tot = /^TOTALE/.test(r[0]);
+    return `<div class="tcard${tot ? ' tot' : ''}"><div class="h">${md(r[0])}</div><div class="kv">${rest.map((h, i) => r[i + 1] ? `<span>${esc(h)}</span><span>${md(r[i + 1])}</span>` : '').join('')}</div></div>`;
+  }).join('');
+};
+
+/* ---------- scena animata dell'hero ---------- */
+const SCENE = `
+<svg class="scene" viewBox="0 0 720 230" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <radialGradient id="gl"><stop offset="0" stop-color="#ffd27a" stop-opacity=".85"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d6670"/><stop offset="1" stop-color="#042a31"/></linearGradient>
+    <linearGradient id="refl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcf8a" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf8a" stop-opacity="0"/></linearGradient>
+    <pattern id="wv1" width="60" height="12" patternUnits="userSpaceOnUse"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="1.6"/></pattern>
+    <pattern id="wv2" width="60" height="12" patternUnits="userSpaceOnUse"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="#9be7e0" stroke-opacity=".3" stroke-width="1.6"/></pattern>
+  </defs>
+  <g class="bird" style="--t:17s"><path d="M30 40 q6 -7 12 0 q6 -7 12 0" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="1.6" stroke-linecap="round"/></g>
+  <g class="bird" style="--t:23s;animation-delay:-9s"><path d="M10 62 q5 -6 10 0 q5 -6 10 0" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/></g>
+  <circle class="glow" cx="470" cy="136" r="120" fill="url(#gl)"/>
+  <circle class="sun" cx="470" cy="136" r="44" fill="#ffd98e"/>
+  <path d="M0 150 L0 126 C28 126 36 84 58 76 C76 70 82 108 98 108 C118 108 126 62 148 52 C166 45 176 96 198 114 L262 124 C300 124 312 98 332 98 C352 98 362 132 402 142 L520 148 C548 148 556 120 572 116 C590 112 598 138 620 142 L720 150 L720 230 L0 230Z" fill="#0f5a63" opacity=".85"/>
+  <path d="M0 230 L0 150 C18 150 28 100 50 88 C68 80 76 128 94 134 C110 140 118 92 136 78 C150 68 160 118 176 158 L192 230Z" fill="#073841"/>
+  <path d="M720 230 L720 130 C700 128 690 70 668 60 C650 54 644 108 628 112 C606 116 602 78 586 72 C574 68 566 118 556 158 L546 230Z" fill="#073841"/>
+  <rect x="0" y="152" width="720" height="80" fill="url(#sea)"/>
+  <rect x="436" y="152" width="68" height="78" fill="url(#refl)"/>
+  <g class="wave" style="--t:7s"><rect x="-60" y="160" width="840" height="12" fill="url(#wv1)"/></g>
+  <g class="wave rev" style="--t:11s"><rect x="-60" y="178" width="840" height="12" fill="url(#wv2)"/></g>
+  <g class="boatx"><g transform="translate(300 166)"><g class="boat">
+    <path d="M-34 0 L36 0 L30 9 L-28 9Z" fill="#06171b"/>
+    <path d="M-12 0 L-12 -11 L16 -11 L16 0" fill="none" stroke="#06171b" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M-12 -11 L16 -11 L12 -15 L-8 -15Z" fill="#e8456b"/>
+    <path d="M34 3 L78 -6" stroke="#06171b" stroke-width="2.4" stroke-linecap="round"/>
+  </g></g></g>
+  <g class="wave" style="--t:5s"><rect x="-60" y="198" width="840" height="12" fill="url(#wv1)"/></g>
+</svg>`;
+
+/* ---------- ANTEPRIMA ---------- */
+function planeSvg() { return '<svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>'; }
+function pass(r) {
+  const codes = r[1].match(/\b[A-Z]{3}\b/g) || ['', ''];
+  const names = r[1].split('→').map(s => s.replace(/\b[A-Z]{3}\b/, '').replace(/\(.*?\)/, '').trim());
+  return `<div class="pass rv"><div class="d">${esc(r[0])}</div>
+    <div class="iata"><b>${esc(codes[0])}</b><div class="path">${planeSvg()}</div><b>${esc(codes[1])}</b></div>
+    <div class="nm"><span>${esc(names[0])}</span><span>${esc(names[1] || '')}</span></div><div class="tm">${esc(r[2])}</div></div>`;
+}
+
+function renderTrip() {
+  const total = TRIP.days.length;
+  const s = parse(TRIP.start), e = parse(TRIP.end), t = parse(TODAY);
+  const dd = Math.round((s - t) / 864e5);
+  let status = '';
+  if (todayDay) {
+    const n = TRIP.days.indexOf(todayDay) + 1;
+    status = `<div class="count"><span class="num" data-to="${n}">0</span><span class="lbl">giorno di ${total}: siete in viaggio</span></div><div class="tripbar"><i data-w="${Math.round(n / total * 100)}"></i></div>`;
+  } else if (dd > 0) {
+    status = `<div class="count"><span class="num" data-to="${dd}">0</span><span class="lbl">giorni alla partenza</span></div>`;
+  } else if (t > e) {
+    status = `<div class="count"><span class="lbl">Viaggio concluso: bentornati!</span></div>`;
+  }
+  const letters = [...TRIP.title].map((c, i) => `<span style="--i:${i}">${esc(c)}</span>`).join('');
+  const range = `${s.getDate()} ${MESI[s.getMonth()]} – ${e.getDate()} ${MESI[e.getMonth()]} ${e.getFullYear()}`;
+
+  $('#viaggio').innerHTML = `
+    <div class="hero">
+      <div class="hero-txt">
+        <div class="eyebrow">${esc(TRIP.subtitle)}</div>
+        <h1 aria-label="${esc(TRIP.title)}">${letters}</h1>
+        <div class="th2" lang="th">ประเทศไทย</div>
+        <div class="chips"><span>${esc(range)}</span>${TRIP.meta.map(m => `<span>${esc(m)}</span>`).join('')}</div>
+        ${status}
+        <p class="lead">${md(TRIP.summary)}</p>
+        <div class="cta">
+          <button class="btn" id="ctaMain" data-go="${TRIP.days[0].id}">Inizia dal giorno 1</button>
+          <button class="btn ghost" data-go="spostamenti">Spostamenti</button>
+        </div>
+      </div>
+      ${SCENE}
+    </div>
+
+    ${heading('viaggio', 'Il viaggio in un colpo d\'occhio', 'Tocca un giorno per aprirlo subito.')}
+    <div class="cal rv">${TRIP.days.map(d => { const f = fmtDay(d); return `<button class="tile${todayDay && todayDay.id === d.id ? ' today' : ''}" style="--c:${COL[d.color] || COL.travel}" data-go="${d.id}"><small>${f.g}</small><b>${f.n}</b><span>${esc(shortPlace(d))}</span></button>`; }).join('')}</div>
+    <div class="donebar rv"><span id="doneTxt"></span><div class="bar"><i id="doneBar"></i></div></div>
+    <div class="key rv">${REGIONI.map(([k, l]) => `<span><i style="--c:${COL[k]}"></i>${l}</span>`).join('')}</div>
+
+    <div class="sub3">Le tappe, in ordine</div>
+    <div class="route" id="route"><div class="rline"><i id="rfill"></i></div>
+    ${TRIP.stages.map(st => {
+      const live = todayDay && st.days.includes(todayDay.id);
+      return `<article class="stage rv${live ? ' live' : ''}" style="--c:${COL[st.color] || COL.travel}" data-go="${st.days[0]}" tabindex="0">
+        <span class="node"></span>
+        <div class="row"><span class="where">${esc(st.where)}</span><span class="when">${esc(st.dates)}</span></div>
+        <p class="hl">${esc(st.hl)}</p>
+        <div class="base">${esc(st.base)}</div>
+        <div class="pills">${st.days.map(id => { const d = dayById(id), f = fmtDay(d); return `<button class="pill${todayDay && todayDay.id === id ? ' today' : ''}" data-go="${id}">${f.g} ${f.n}/${f.mm}</button>`; }).join('')}</div>
+      </article>`;
+    }).join('')}</div>
+
+    ${heading('viaggio', 'Perché questa struttura').replace('<div class="th">เส้นทาง</div>', '<div class="th">ทำไมถึงเป็นแบบนี้</div>')}
+    <div class="card rv"><ul class="bl">${TRIP.why.map(w => `<li>${md(w)}</li>`).join('')}</ul></div>
+
+    ${heading('viaggio', 'I voli già prenotati').replace('<div class="th">เส้นทาง</div>', '<div class="th">เที่ยวบิน</div>')}
+    <div class="sub3">Internazionali · Austrian / Star Alliance</div>
+    <div class="passes">${TRIP.flights.intl.map(pass).join('')}</div>
+    <div class="sub3">Voli interni</div>
+    <div class="passes">${TRIP.flights.domestic.map(pass).join('')}</div>
+    ${TRIP.alerts.map(box).join('')}
+
+    ${heading('viaggio', 'Da fare adesso').replace('<div class="th">เส้นทาง</div>', '<div class="th">สิ่งที่ต้องทำ</div>')}
+    <div class="card rv"><ul class="pl">${TRIP.todo.map((x, i) => `<li><label for="todo${i}"><input type="checkbox" id="todo${i}" data-k="todo${i}"><span>${md(x)}</span></label></li>`).join('')}</ul></div>
+  `;
+}
+
+/* ---------- GIORNI ---------- */
+function renderDays() {
+  $('#giorni').innerHTML = `${heading('giorni', 'Giorno per giorno')}
+    <div class="tools"><button id="openAll">Apri tutti</button><button id="closeAll">Chiudi tutti</button><button id="resetDone">Azzera giorni fatti</button>${todayDay ? `<button data-go="${todayDay.id}">Oggi</button>` : ''}</div>
+    ${TRIP.days.map((d, i) => {
+      const f = fmtDay(d), prev = TRIP.days[i - 1], next = TRIP.days[i + 1];
+      const pf = prev && fmtDay(prev), nf = next && fmtDay(next);
+      return `<details class="day rv" id="${d.id}" style="--c:${COL[d.color] || COL.travel}">
+        <summary>
+          <div class="dbadge"><small>${f.g}</small><b>${f.n}</b><small>${f.m}</small></div>
+          <div class="dtitle"><strong>${esc(d.title)}${todayDay && todayDay.id === d.id ? '<span class="todaytag">OGGI</span>' : ''}</strong><span>${esc(d.place)}</span></div>
+          <span class="chev"></span>
+        </summary>
+        <div class="dbody">
+          <label class="donechk" for="done_${d.id}"><input type="checkbox" id="done_${d.id}" data-done="${d.id}"><span>Giorno fatto</span></label>
+          <ul class="tl">${d.items.map(([tm, x]) => tm ? `<li><span class="t">${esc(tm)}</span><span>${md(x)}</span></li>` : `<li class="nt"><span>${md(x)}</span></li>`).join('')}</ul>
+          ${(d.boxes || []).map(box).join('')}
+          ${linkBtns(d.links)}
+          <div class="dnav">
+            ${prev ? `<button data-go="${prev.id}" data-close="${d.id}">← ${pf.n} ${pf.m}</button>` : ''}
+            <button data-go="viaggio">Anteprima</button>
+            ${next ? `<button data-go="${next.id}" data-close="${d.id}">${nf.n} ${nf.m} →</button>` : ''}
+          </div>
+        </div>
+      </details>`;
+    }).join('')}`;
+}
+
+/* ---------- SPOSTAMENTI ---------- */
+function renderTransfers() {
+  $('#spostamenti').innerHTML = `${heading('spostamenti', 'Tutte le tratte', esc(TRIP.transfers.note))}
+    <div class="rvwrap">${TRIP.transfers.rows.map(r => table({ head: TRIP.transfers.head, rows: [r] })).join('')}</div>
+    ${heading('spostamenti', 'Otto regole per muoversi in otto').replace('<div class="th">การเดินทาง</div>', '<div class="th">กฎเหล็ก</div>')}
+    <div class="card rv"><ol class="bl">${TRIP.rules.map(r => `<li>${md(r)}</li>`).join('')}</ol></div>
+    ${heading('spostamenti', 'Budget indicativo a testa', esc(TRIP.budget.note)).replace('<div class="th">การเดินทาง</div>', '<div class="th">งบประมาณ</div>')}
+    ${table(TRIP.budget)}`;
+}
+
+/* ---------- ZAINO ---------- */
+function renderPacking() {
+  const P = TRIP.packing;
+  $('#zaino').innerHTML = `${heading('zaino', 'Cosa mettere nello zaino', md(P.intro))}
+    <div class="box info rv"><h4>La regola dei 3 climi</h4><ul>${P.climates.map(c => `<li>${md(c)}</li>`).join('')}</ul></div>
+    <div class="meter"><span id="packTxt">0/0</span><div class="bar"><i id="packBar"></i></div></div>
+    ${P.groups.map((g, gi) => `<details class="acc rv" id="pack${gi}" style="--c:${['var(--bkk)', 'var(--sud)', 'var(--lago)', 'var(--nord)'][gi % 4]}"><summary><span class="dot"></span>${esc(g.title)} <small>${g.items.length}</small><span class="chev"></span></summary>
+      <div class="abody"><ul class="pl">${g.items.map((it, i) => `<li><label for="p${gi}_${i}"><input type="checkbox" id="p${gi}_${i}" data-k="p${gi}_${i}" data-pack><span>${md(it)}</span></label></li>`).join('')}</ul></div></details>`).join('')}
+    <div class="box warn rv"><h4>Cosa NON portare</h4><ul>${P.nogo.map(n => `<li>${md(n)}</li>`).join('')}</ul></div>
+    <div class="tools"><button id="resetChecks">Azzera spunte</button></div>`;
+}
+
+/* ---------- INFO ---------- */
+function renderInfo() {
+  const cols = ['var(--bkk)', 'var(--sud)', 'var(--lago)', 'var(--nord)', 'var(--travel)'];
+  $('#info').innerHTML = `${heading('info', 'Informazioni pratiche', 'Le regole d\'ingresso cambiano spesso: ricontrollate tutto un mese prima su viaggiaresicuri.it.')}
+    ${TRIP.info.map((s, i) => `<details class="acc rv" id="info${i}" style="--c:${cols[i % cols.length]}"><summary><span class="dot"></span>${esc(s.title)}<span class="chev"></span></summary><div class="abody">
+      ${s.blocks.map(b => (b.h ? `<h4>${esc(b.h)}</h4>` : '') + (b.p ? `<p>${md(b.p)}</p>` : '') + (b.ul ? `<ul class="bl">${b.ul.map(x => `<li>${md(x)}</li>`).join('')}</ul>` : '') + (b.table ? table(b.table) : '') + (b.kind ? box(b) : '')).join('')}
+      ${linkBtns(s.links)}</div></details>`).join('')}`;
+  $('footer').innerHTML = '<span class="th" lang="th">เที่ยวให้สนุก</span><small>Buon viaggio</small>';
+}
+
+/* ---------- NAVIGAZIONE ---------- */
+function renderTabs() {
+  $('#tabs').innerHTML = SECTIONS.map(([id, l]) => `<a href="#${id}" data-go="${id}">${l}</a>`).join('');
+  const s = parse(TRIP.start), e = parse(TRIP.end);
+  $('#hdrDates').textContent = `${s.getDate()} ${MESI[s.getMonth()]} – ${e.getDate()} ${MESI[e.getMonth()]}`;
+}
+function goTo(id, closeId) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (closeId) { const c = document.getElementById(closeId); if (c) c.open = false; }
+  if (el.tagName === 'DETAILS') el.open = true;
+  closeSheet();
+  setTimeout(() => {
+    el.classList.add('in');
+    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    safe(() => history.replaceState(null, '', '#' + id));
+  }, 30);
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-go]');
+  if (b) { e.preventDefault(); goTo(b.dataset.go, b.dataset.close); }
+});
+document.addEventListener('keydown', e => {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.stage[data-go]')) { e.preventDefault(); goTo(e.target.dataset.go); }
+  if (e.key === 'Escape') closeSheet();
+});
+
+function buildSheet() {
+  $('#sheet').innerHTML = `<div class="grab"></div>
+    <h3 style="margin-top:8px">Sezioni</h3>
+    <div class="grid">${SECTIONS.map(([id, l, th]) => `<button class="it" data-go="${id}">${l}<small lang="th">${th}</small></button>`).join('')}</div>
+    <h3>Tappe</h3>
+    <div class="grid">${TRIP.stages.map(s => `<button class="it" style="--c:${COL[s.color]}" data-go="${s.days[0]}">${esc(s.where)}<small>${esc(s.dates.split(' · ')[0])}</small></button>`).join('')}</div>
+    <h3>Giorni</h3>
+    <div class="grid days">${TRIP.days.map(d => { const f = fmtDay(d); return `<button class="it" style="--c:${COL[d.color]}" data-go="${d.id}">${f.g} ${f.n}/${f.mm}<small>${esc(shortPlace(d))}</small></button>`; }).join('')}</div>`;
+}
+function openSheet() { $('#sheetBg').classList.add('on'); }
+function closeSheet() { $('#sheetBg').classList.remove('on'); }
+$('#goBtn').onclick = openSheet;
+$('#sheetBg').addEventListener('click', e => { if (e.target.id === 'sheetBg') closeSheet(); });
+$('#upBtn').onclick = () => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+
+/* ---------- SPUNTE (salvate sul telefono) ---------- */
+function updatePack() {
+  const all = $$('input[data-pack]'), done = all.filter(i => i.checked).length;
+  const t = $('#packTxt'), b = $('#packBar');
+  if (t && b) { t.textContent = `Zaino pronto: ${done}/${all.length}`; b.style.width = (all.length ? done / all.length * 100 : 0) + '%'; }
+}
+function bindChecks() {
+  const store = safe(() => JSON.parse(localStorage.getItem('thai26') || '{}')) || {};
+  $$('input[data-k]').forEach(i => {
+    i.checked = !!store[i.dataset.k];
+    i.addEventListener('change', () => { store[i.dataset.k] = i.checked; safe(() => localStorage.setItem('thai26', JSON.stringify(store))); updatePack(); });
+  });
+  const r = $('#resetChecks');
+  if (r) r.onclick = () => {
+    if (r.dataset.arm) { $$('input[data-k]').forEach(i => i.checked = false); safe(() => localStorage.removeItem('thai26')); updatePack(); r.textContent = 'Azzera spunte'; delete r.dataset.arm; }
+    else { r.dataset.arm = 1; r.textContent = 'Tocca ancora per confermare'; setTimeout(() => { r.textContent = 'Azzera spunte'; delete r.dataset.arm; }, 3000); }
+  };
+  updatePack();
+}
+
+/* ---------- GIORNI FATTI (salvati sul telefono) ---------- */
+const DONE = safe(() => JSON.parse(localStorage.getItem('thai26done') || '{}')) || {};
+const saveDone = () => safe(() => localStorage.setItem('thai26done', JSON.stringify(DONE)));
+function nextDay() {
+  if (todayDay && !DONE[todayDay.id]) return todayDay;
+  let last = -1; TRIP.days.forEach((d, i) => { if (DONE[d.id]) last = i; });
+  return TRIP.days.slice(last + 1).find(d => !DONE[d.id]) || TRIP.days.find(d => !DONE[d.id]) || null;
+}
+function updateDone() {
+  const n = TRIP.days.filter(d => DONE[d.id]).length, tot = TRIP.days.length;
+  TRIP.days.forEach(d => {
+    const on = !!DONE[d.id];
+    const det = document.getElementById(d.id); if (det) det.classList.toggle('done', on);
+    const chk = document.getElementById('done_' + d.id); if (chk) chk.checked = on;
+    $$('.tile[data-go="' + d.id + '"], .pill[data-go="' + d.id + '"]').forEach(el => el.classList.toggle('done', on));
+  });
+  $$('.stage').forEach(st => { const ps = $$('.pill', st); st.classList.toggle('done', ps.length > 0 && ps.every(p => p.classList.contains('done'))); });
+  const t = $('#doneTxt'), b = $('#doneBar');
+  if (t && b) { t.textContent = n ? 'Giorni fatti: ' + n + '/' + tot : 'Spunta i giorni che hai già fatto'; b.style.width = (n / tot * 100) + '%'; }
+  const c = $('#ctaMain');
+  if (c) {
+    const nd = nextDay(), f = nd && fmtDay(nd);
+    if (!nd) { c.textContent = 'Viaggio completato: rivedi'; c.dataset.go = TRIP.days[0].id; }
+    else if (todayDay && nd.id === todayDay.id) { c.textContent = 'Vai a oggi'; c.dataset.go = nd.id; }
+    else if (!n) { c.textContent = 'Inizia dal giorno 1'; c.dataset.go = nd.id; }
+    else { c.textContent = 'Continua: ' + f.g + ' ' + f.n + '/' + f.mm; c.dataset.go = nd.id; }
+  }
+}
+function bindDone() {
+  document.addEventListener('change', e => {
+    const i = e.target.closest('input[data-done]'); if (!i) return;
+    if (i.checked) DONE[i.dataset.done] = 1; else delete DONE[i.dataset.done];
+    saveDone(); updateDone();
+  });
+  const r = $('#resetDone');
+  if (r) r.onclick = () => {
+    if (r.dataset.arm) { Object.keys(DONE).forEach(k => delete DONE[k]); saveDone(); updateDone(); r.textContent = 'Azzera giorni fatti'; delete r.dataset.arm; }
+    else { r.dataset.arm = 1; r.textContent = 'Tocca ancora per confermare'; setTimeout(() => { r.textContent = 'Azzera giorni fatti'; delete r.dataset.arm; }, 3000); }
+  };
+  updateDone();
+}
+
+/* ---------- animazioni ---------- */
+function countUp() {
+  $$('.num[data-to]').forEach(el => {
+    const to = +el.dataset.to; if (reduced || to < 2) { el.textContent = to; return; }
+    const t0 = performance.now(), dur = 1400;
+    const step = now => { const p = Math.min(1, (now - t0) / dur); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+  setTimeout(() => $$('.tripbar i').forEach(i => i.style.width = i.dataset.w + '%'), 300);
+}
+function setupReveal() {
+  if (reduced || !('IntersectionObserver' in window)) { $$('.rv').forEach(el => el.classList.add('in')); return; }
+  document.documentElement.classList.add('js');
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target; io.unobserve(el);
+    el.style.transitionDelay = Math.min(el.dataset.d || 0, 300) + 'ms';
+    el.classList.add('in');
+    setTimeout(() => { el.classList.remove('rv', 'in'); el.style.transitionDelay = ''; }, 1100);
+  }), { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  $$('.rv').forEach(el => io.observe(el));
+  // sicurezza: se qualcosa resta nascosto, mostra tutto dopo 4 secondi
+  setTimeout(() => $$('.rv').forEach(el => el.classList.add('in')), 4000);
+}
+function setupScroll() {
+  const prog = $('#progress'), fill = $('#rfill'), route = $('#route'), up = $('#upBtn');
+  let tick = false;
+  const run = () => {
+    tick = false;
+    const h = document.documentElement, max = h.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+    up.classList.toggle('show', scrollY > 600);
+    if (route && fill) { const r = route.getBoundingClientRect(); fill.style.height = Math.max(0, Math.min(1, (innerHeight * .65 - r.top) / r.height)) * 100 + '%'; }
+  };
+  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true });
+  addEventListener('resize', run); run();
+}
+
+/* ---------- avvio ---------- */
+function init() {
+  document.title = TRIP.title.charAt(0) + TRIP.title.slice(1).toLowerCase() + ' ' + TRIP.end.slice(0, 4);
+  renderTabs(); renderTrip(); renderDays(); renderTransfers(); renderPacking(); renderInfo(); buildSheet(); bindChecks(); bindDone();
+  $('#openAll').onclick = () => $$('details.day').forEach(d => d.open = true);
+  $('#closeAll').onclick = () => $$('details.day').forEach(d => d.open = false);
+  const hdr = $('header.top'); const setH = () => document.documentElement.style.setProperty('--hdr', (hdr.offsetHeight + 8) + 'px');
+  setH(); addEventListener('resize', setH);
+  const links = $$('#tabs a');
+  const spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.toggle('on', a.dataset.go === en.target.id)); }), { rootMargin: '-30% 0px -65% 0px' });
+  SECTIONS.forEach(([id]) => spy.observe(document.getElementById(id)));
+  $$('.cal .tile, .passes .pass, .route .stage').forEach((el, i) => el.dataset.d = (i % 5) * 60);
+  setupReveal(); setupScroll(); countUp();
+  const h = location.hash.slice(1);
+  if (h && document.getElementById(h)) setTimeout(() => goTo(h), 200);
+  else if (todayDay) document.getElementById(todayDay.id).open = true;
+}
+init();
+</script>
+</body>
+</html>
