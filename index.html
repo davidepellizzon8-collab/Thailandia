@@ -54,13 +54,14 @@ header.top{position:sticky;top:0;z-index:20;background:var(--glass);backdrop-fil
 .logo{font:800 .95rem var(--display);letter-spacing:.16em}
 .logo small{font:500 .78rem var(--body);letter-spacing:0;color:var(--mute);margin-left:8px}
 .thai{font:600 .85rem var(--display);color:var(--accent-t)}
-.tabs{max-width:720px;margin:0 auto;display:flex;gap:4px;padding:6px 10px 8px}
+.tabs{width:calc(100% - 24px);max-width:696px;margin:7px auto 9px;display:flex;gap:2px;padding:4px;background:var(--surface2);border-radius:99px}
 .tabs a{flex:1;text-align:center;text-decoration:none;color:var(--mute);font:600 .8rem var(--display);padding:7px 2px;border-radius:99px;transition:background .25s,color .25s}
-.tabs a.on{background:var(--ink);color:var(--bg)}
+.tabs a.on{background:var(--ink);color:var(--bg);box-shadow:0 3px 10px rgba(8,50,56,.25)}
 
 /* ---------- intestazioni sezione ---------- */
 .sh{margin:46px 0 16px}
-.sh .th{font:600 .82rem var(--display);color:var(--accent-t);letter-spacing:.1em}
+.sh .th{font:600 .82rem var(--display);color:var(--accent-t);letter-spacing:.1em;display:flex;align-items:center;gap:8px}
+.sh .th::before{content:"";width:22px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--saffron),var(--bkk))}
 .sh h2{font:800 1.8rem/1.12 var(--display);margin:2px 0 0;text-wrap:balance}
 .sh p{color:var(--mute);margin:6px 0 0;font-size:.95rem}
 h3{font:700 1.05rem var(--display);margin:0 0 8px}
@@ -83,7 +84,7 @@ h3{font:700 1.05rem var(--display);margin:0 0 8px}
 .lead{font-size:.95rem;opacity:.95;margin:10px 0 16px;max-width:52ch}
 .cta{display:flex;flex-wrap:wrap;gap:10px;padding-bottom:6px}
 .btn{border:0;border-radius:99px;padding:12px 20px;font:700 .95rem var(--display);background:var(--saffron);color:var(--on-saffron);box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .15s}
-.btn.ghost{background:rgba(255,255,255,.16);color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.3)}
+.btn.ghost{background:rgba(5,38,45,.5);color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .btn:active{transform:scale(.95)}
 .scene{display:block;width:100%;height:auto;margin-top:-6px;position:relative;z-index:1}
 .sun{animation:sunrise 2.6s cubic-bezier(.2,.8,.2,1) both;transform-box:fill-box}
@@ -139,7 +140,7 @@ h3{font:700 1.05rem var(--display);margin:0 0 8px}
 
 /* ---------- voli ---------- */
 .passes{display:grid;gap:10px}
-.pass{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;position:relative}
+.pass{background:linear-gradient(135deg,color-mix(in srgb,var(--sud) 9%,var(--surface)),var(--surface) 60%);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;position:relative;box-shadow:0 6px 18px rgba(8,50,56,.06)}
 .pass::before,.pass::after{content:"";position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--bg);border:1px solid var(--line);transform:translateY(-50%)}
 .pass::before{left:-8px}.pass::after{right:-8px}
 .pass .d{font:600 .74rem var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
@@ -160,10 +161,12 @@ h3{font:700 1.05rem var(--display);margin:0 0 8px}
 .box.warn{--bg-b:var(--warn-bg);--fg-b:var(--warn)}
 .box.tip{--bg-b:var(--tip-bg);--fg-b:var(--tip)}
 .box.info{--bg-b:var(--info-bg);--fg-b:var(--info)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;box-shadow:0 6px 18px rgba(8,50,56,.05)}
 
 /* ---------- giorni ---------- */
-details.day{--c:var(--travel);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;scroll-margin-top:var(--hdr);overflow:hidden;transition:box-shadow .25s}
+details.day{--c:var(--travel);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;scroll-margin-top:var(--hdr);overflow:hidden;transition:box-shadow .25s,opacity .28s,transform .28s}
+details.day.leaving{opacity:0;transform:translateX(28px) scale(.97)}
+details.day.done:not(.peek){display:none}
 details.day[open]{box-shadow:var(--shadow)}
 details.day>summary{list-style:none;cursor:pointer;display:flex;gap:14px;align-items:center;padding:12px 14px;background:linear-gradient(90deg,color-mix(in srgb,var(--c) 18%,var(--surface)),var(--surface) 75%)}
 details.day>summary::-webkit-details-marker{display:none}
@@ -193,7 +196,7 @@ details[open] .dbody{animation:unfold .45s cubic-bezier(.2,.8,.2,1)}
 .tools button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 14px;font:600 .82rem var(--display)}
 
 /* ---------- tabelle a schede ---------- */
-.tcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:8px}
+.tcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 14px;margin-bottom:8px;box-shadow:0 4px 14px rgba(8,50,56,.05)}
 .tcard .h{font:700 .98rem var(--display);margin-bottom:3px}
 .tcard .kv{display:grid;grid-template-columns:84px 1fr;gap:2px 10px;font-size:.88rem}
 .tcard .kv span:nth-child(odd){color:var(--mute)}
@@ -216,7 +219,9 @@ ul.bl{margin:6px 0 10px;padding-left:20px}ul.bl li{margin:6px 0}
 .meter .bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--saffron),var(--lago));transition:width .5s cubic-bezier(.2,.8,.2,1)}
 
 /* ---------- fisarmoniche ---------- */
-details.acc{--c:var(--brand);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;scroll-margin-top:var(--hdr);overflow:hidden}
+details.acc{--c:var(--brand);background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:var(--r);margin-bottom:10px;scroll-margin-top:var(--hdr);overflow:hidden;box-shadow:0 4px 14px rgba(8,50,56,.04);transition:box-shadow .25s}
+details.acc[open]{box-shadow:var(--shadow)}
+details.acc details.acc{box-shadow:none;margin-bottom:8px}
 details.acc>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;font:700 1rem var(--display)}
 details.acc>summary::-webkit-details-marker{display:none}
 details.acc>summary .chev{margin-left:auto}
@@ -274,6 +279,33 @@ details.day.done>summary .dtitle span::after{content:" · fatto";color:var(--lag
 .donechk input:checked{background:var(--lago);border-color:var(--lago);transform:scale(1.08)}
 .donechk input:checked::after{transform:rotate(45deg) scale(1)}
 
+
+/* ---------- sezioni: una alla volta ---------- */
+[hidden]{display:none!important}
+main>section.active{animation:secin .4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes secin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+details.acc>summary .ico{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:1.1rem;background:color-mix(in srgb,var(--c) 16%,var(--surface))}
+details.acc>summary .stt{flex:1;min-width:0;line-height:1.25}
+
+/* ---------- spostamenti spuntabili ---------- */
+.mvbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 4px;font:600 .84rem var(--display);color:var(--mute)}
+.mvrestore{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 14px;font:600 .8rem var(--display)}
+.mvrestore:active{transform:scale(.95)}
+.mvi{position:relative;transition:opacity .28s,transform .28s cubic-bezier(.4,0,.2,1)}
+.mvi.leaving{opacity:0;transform:translateX(28px) scale(.97)}
+.mvi.gone,.mvgroup.empty{display:none}
+.mvi .tcard,.mvi .pass{padding-right:56px}
+.mvchk{position:absolute;top:50%;right:12px;width:34px;height:34px;margin-top:-17px;padding:0;border-radius:50%;border:2px solid var(--mute);background:var(--surface);display:grid;place-items:center;transition:background .2s,border-color .2s,transform .15s;z-index:2}
+.mvchk::after{content:"";width:7px;height:13px;border:solid var(--on-brand);border-width:0 3px 3px 0;transform:rotate(45deg) scale(0);margin-top:-3px;transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.mvchk:active,.mvi.leaving .mvchk{background:var(--lago);border-color:var(--lago);transform:scale(1.1)}
+.mvi.leaving .mvchk::after,.mvchk:active::after{transform:rotate(45deg) scale(1)}
+@media (hover:hover){.mvchk:hover{border-color:var(--lago)}}
+.mvempty{display:grid;gap:2px;text-align:center;margin:24px 0;padding:22px 16px;border-radius:var(--r);background:var(--tip-bg);color:var(--tip)}
+.mvempty b{font:800 1.3rem var(--display)}
+.snack{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:35;display:flex;align-items:center;gap:14px;background:var(--ink);color:var(--bg);border-radius:99px;padding:8px 8px 8px 18px;font-size:.88rem;box-shadow:0 10px 26px rgba(0,0,0,.3);transform:translate(-50%,20px);opacity:0;pointer-events:none;transition:opacity .25s,transform .3s cubic-bezier(.2,1.1,.3,1)}
+.snack.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.snack button{border:0;border-radius:99px;background:var(--saffron);color:var(--on-saffron);padding:6px 14px;font:700 .84rem var(--display)}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -291,7 +323,6 @@ details.day.done>summary .dtitle span::after{content:" · fatto";color:var(--lag
   <section id="viaggio"></section>
   <section id="giorni"></section>
   <section id="spostamenti"></section>
-  <section id="zaino"></section>
   <section id="info"></section>
   <footer></footer>
 </main>
@@ -299,6 +330,7 @@ details.day.done>summary .dtitle span::after{content:" · fatto";color:var(--lag
   <button class="up" id="upBtn" aria-label="Torna su">↑</button>
   <button class="go" id="goBtn">Vai a…</button>
 </div>
+<div class="snack" id="snack" role="status"><span>Nascosto dalla lista</span><button id="snackUndo">Annulla</button></div>
 <div class="sheet-bg" id="sheetBg"><div class="sheet" id="sheet"></div></div>
 
 <script>
@@ -853,8 +885,8 @@ const REGIONI = [['bkk', 'Bangkok'], ['nord', 'Nord'], ['lago', 'Giungla'], ['su
 const MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];
 const GG = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
 const SECTIONS = [
-  ['viaggio', 'Anteprima', 'เส้นทาง'], ['giorni', 'Giorni', 'รายวัน'], ['spostamenti', 'Muoversi', 'การเดินทาง'],
-  ['zaino', 'Zaino', 'เตรียมกระเป๋า'], ['info', 'Info', 'ข้อมูลที่ควรรู้']
+  ['viaggio', 'Anteprima', 'เส้นทาง'], ['giorni', 'Giorni', 'รายวัน'], ['spostamenti', 'Spostamenti', 'การเดินทาง'],
+  ['info', 'Info', 'ข้อมูลที่ควรรู้']
 ];
 const parse = iso => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); };
 const isoToday = () => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`; };
@@ -883,7 +915,6 @@ const SCENE = `
   <defs>
     <radialGradient id="gl"><stop offset="0" stop-color="#ffd27a" stop-opacity=".85"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d6670"/><stop offset="1" stop-color="#042a31"/></linearGradient>
-    <linearGradient id="refl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcf8a" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf8a" stop-opacity="0"/></linearGradient>
     <pattern id="wv1" width="60" height="12" patternUnits="userSpaceOnUse"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="1.6"/></pattern>
     <pattern id="wv2" width="60" height="12" patternUnits="userSpaceOnUse"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="#9be7e0" stroke-opacity=".3" stroke-width="1.6"/></pattern>
   </defs>
@@ -895,7 +926,6 @@ const SCENE = `
   <path d="M0 230 L0 150 C18 150 28 100 50 88 C68 80 76 128 94 134 C110 140 118 92 136 78 C150 68 160 118 176 158 L192 230Z" fill="#073841"/>
   <path d="M720 230 L720 130 C700 128 690 70 668 60 C650 54 644 108 628 112 C606 116 602 78 586 72 C574 68 566 118 556 158 L546 230Z" fill="#073841"/>
   <rect x="0" y="152" width="720" height="80" fill="url(#sea)"/>
-  <rect x="436" y="152" width="68" height="78" fill="url(#refl)"/>
   <g class="wave" style="--t:7s"><rect x="-60" y="160" width="840" height="12" fill="url(#wv1)"/></g>
   <g class="wave rev" style="--t:11s"><rect x="-60" y="178" width="840" height="12" fill="url(#wv2)"/></g>
   <g class="boatx"><g transform="translate(300 166)"><g class="boat">
@@ -971,13 +1001,6 @@ function renderTrip() {
     ${heading('viaggio', 'Perché questa struttura').replace('<div class="th">เส้นทาง</div>', '<div class="th">ทำไมถึงเป็นแบบนี้</div>')}
     <div class="card rv"><ul class="bl">${TRIP.why.map(w => `<li>${md(w)}</li>`).join('')}</ul></div>
 
-    ${heading('viaggio', 'I voli già prenotati').replace('<div class="th">เส้นทาง</div>', '<div class="th">เที่ยวบิน</div>')}
-    <div class="sub3">Internazionali · Austrian / Star Alliance</div>
-    <div class="passes">${TRIP.flights.intl.map(pass).join('')}</div>
-    <div class="sub3">Voli interni</div>
-    <div class="passes">${TRIP.flights.domestic.map(pass).join('')}</div>
-    ${TRIP.alerts.map(box).join('')}
-
     ${heading('viaggio', 'Da fare adesso').replace('<div class="th">เส้นทาง</div>', '<div class="th">สิ่งที่ต้องทำ</div>')}
     <div class="card rv"><ul class="pl">${TRIP.todo.map((x, i) => `<li><label for="todo${i}"><input type="checkbox" id="todo${i}" data-k="todo${i}"><span>${md(x)}</span></label></li>`).join('')}</ul></div>
   `;
@@ -986,7 +1009,7 @@ function renderTrip() {
 /* ---------- GIORNI ---------- */
 function renderDays() {
   $('#giorni').innerHTML = `${heading('giorni', 'Giorno per giorno')}
-    <div class="tools"><button id="openAll">Apri tutti</button><button id="closeAll">Chiudi tutti</button><button id="resetDone">Azzera giorni fatti</button>${todayDay ? `<button data-go="${todayDay.id}">Oggi</button>` : ''}</div>
+    <div class="tools"><button id="openAll">Apri tutti</button><button id="closeAll">Chiudi tutti</button><button id="resetDone" hidden>Ripristina giorni fatti</button>${todayDay ? `<button data-go="${todayDay.id}">Oggi</button>` : ''}</div>
     ${TRIP.days.map((d, i) => {
       const f = fmtDay(d), prev = TRIP.days[i - 1], next = TRIP.days[i + 1];
       const pf = prev && fmtDay(prev), nf = next && fmtDay(next);
@@ -1008,38 +1031,75 @@ function renderDays() {
           </div>
         </div>
       </details>`;
-    }).join('')}`;
+    }).join('')}
+    <div class="mvempty" id="dayEmpty" hidden><b>Viaggio completato ✓</b><span>Tutti i giorni sono stati spuntati. Usa "Ripristina giorni fatti" per rivederli.</span></div>`;
 }
 
-/* ---------- SPOSTAMENTI ---------- */
-function renderTransfers() {
-  $('#spostamenti').innerHTML = `${heading('spostamenti', 'Tutte le tratte', esc(TRIP.transfers.note))}
-    <div class="rvwrap">${TRIP.transfers.rows.map(r => table({ head: TRIP.transfers.head, rows: [r] })).join('')}</div>
-    ${heading('spostamenti', 'Otto regole per muoversi in otto').replace('<div class="th">การเดินทาง</div>', '<div class="th">กฎเหล็ก</div>')}
-    <div class="card rv"><ol class="bl">${TRIP.rules.map(r => `<li>${md(r)}</li>`).join('')}</ol></div>
-    ${heading('spostamenti', 'Budget indicativo a testa', esc(TRIP.budget.note)).replace('<div class="th">การเดินทาง</div>', '<div class="th">งบประมาณ</div>')}
-    ${table(TRIP.budget)}`;
+/* ---------- SPOSTAMENTI (voli + tratte, spuntabili) ---------- */
+const MV = safe(() => JSON.parse(localStorage.getItem('thai26move') || '{}')) || {};
+const saveMv = () => safe(() => localStorage.setItem('thai26move', JSON.stringify(MV)));
+const mvItem = (key, inner) => `<div class="mvi" data-mv="${key}">${inner}<button class="mvchk" data-mvchk="${key}" aria-label="Fatto: nascondi"></button></div>`;
+function renderMoves() {
+  const F = TRIP.flights, T = TRIP.transfers;
+  $('#spostamenti').innerHTML = `${heading('spostamenti', 'Voli e spostamenti', 'Tocca il cerchio quando un volo o una tratta è fatta: sparisce dalla lista.')}
+    <div class="mvbar"><span id="mvTxt"></span><button class="mvrestore" id="mvRestore" hidden>Ripristina tutti</button></div>
+    <div class="mvgroup"><div class="sub3">Voli internazionali · Austrian / Star Alliance</div>
+      <div class="passes">${F.intl.map((r, i) => mvItem('fi' + i, pass(r))).join('')}</div></div>
+    <div class="mvgroup"><div class="sub3">Voli interni</div>
+      <div class="passes">${F.domestic.map((r, i) => mvItem('fd' + i, pass(r))).join('')}</div></div>
+    ${TRIP.alerts.map(box).join('')}
+    <div class="mvgroup"><div class="sub3">Tratte a terra e in barca</div>
+      <p class="legend">${esc(T.note)}</p>
+      ${T.rows.map((r, i) => mvItem('tr' + i, table({ head: T.head, rows: [r] }))).join('')}</div>
+    <div class="mvempty" id="mvEmpty" hidden><b>Tutto fatto ✓</b><span>Ogni volo e ogni tratta è stata spuntata.</span></div>`;
+}
+let snackT = 0, snackKey = null;
+function showSnack(undo) {
+  snackKey = undo; const s = $('#snack'); s.classList.add('on');
+  clearTimeout(snackT); snackT = setTimeout(() => s.classList.remove('on'), 5000);
+}
+function updateMove() {
+  const all = $$('.mvi'), hid = all.filter(el => MV[el.dataset.mv]);
+  all.forEach(el => el.classList.toggle('gone', !!MV[el.dataset.mv]));
+  $$('.mvgroup').forEach(g => g.classList.toggle('empty', !$$('.mvi:not(.gone)', g).length));
+  const t = $('#mvTxt'); if (!t) return;
+  t.textContent = `${all.length - hid.length} da fare · ${hid.length} fatti`;
+  $('#mvRestore').hidden = !hid.length;
+  $('#mvEmpty').hidden = !(all.length && hid.length === all.length);
+}
+function bindMoves() {
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-mvchk]'); if (!b) return;
+    const el = b.closest('.mvi'); if (el.classList.contains('leaving')) return;
+    el.classList.add('leaving');
+    setTimeout(() => { MV[b.dataset.mvchk] = 1; saveMv(); el.classList.remove('leaving'); updateMove(); showSnack(() => { delete MV[b.dataset.mvchk]; saveMv(); updateMove(); }); }, reduced ? 0 : 280);
+  });
+  $('#mvRestore').onclick = () => { Object.keys(MV).forEach(k => delete MV[k]); saveMv(); updateMove(); $('#snack').classList.remove('on'); };
+  $('#snackUndo').onclick = () => { if (snackKey) snackKey(); snackKey = null; $('#snack').classList.remove('on'); };
+  updateMove();
 }
 
-/* ---------- ZAINO ---------- */
-function renderPacking() {
+/* ---------- INFO (include zaino, regole e budget) ---------- */
+function packingBody() {
   const P = TRIP.packing;
-  $('#zaino').innerHTML = `${heading('zaino', 'Cosa mettere nello zaino', md(P.intro))}
-    <div class="box info rv"><h4>La regola dei 3 climi</h4><ul>${P.climates.map(c => `<li>${md(c)}</li>`).join('')}</ul></div>
+  return `<p>${md(P.intro)}</p>
+    <div class="box info"><h4>La regola dei 3 climi</h4><ul>${P.climates.map(c => `<li>${md(c)}</li>`).join('')}</ul></div>
     <div class="meter"><span id="packTxt">0/0</span><div class="bar"><i id="packBar"></i></div></div>
-    ${P.groups.map((g, gi) => `<details class="acc rv" id="pack${gi}" style="--c:${['var(--bkk)', 'var(--sud)', 'var(--lago)', 'var(--nord)'][gi % 4]}"><summary><span class="dot"></span>${esc(g.title)} <small>${g.items.length}</small><span class="chev"></span></summary>
+    ${P.groups.map((g, gi) => `<details class="acc" id="pack${gi}" style="--c:${['var(--bkk)', 'var(--sud)', 'var(--lago)', 'var(--nord)'][gi % 4]}"><summary><span class="dot"></span>${esc(g.title)} <small>${g.items.length}</small><span class="chev"></span></summary>
       <div class="abody"><ul class="pl">${g.items.map((it, i) => `<li><label for="p${gi}_${i}"><input type="checkbox" id="p${gi}_${i}" data-k="p${gi}_${i}" data-pack><span>${md(it)}</span></label></li>`).join('')}</ul></div></details>`).join('')}
-    <div class="box warn rv"><h4>Cosa NON portare</h4><ul>${P.nogo.map(n => `<li>${md(n)}</li>`).join('')}</ul></div>
+    <div class="box warn"><h4>Cosa NON portare</h4><ul>${P.nogo.map(n => `<li>${md(n)}</li>`).join('')}</ul></div>
     <div class="tools"><button id="resetChecks">Azzera spunte</button></div>`;
 }
-
-/* ---------- INFO ---------- */
 function renderInfo() {
   const cols = ['var(--bkk)', 'var(--sud)', 'var(--lago)', 'var(--nord)', 'var(--travel)'];
+  const items = TRIP.info.map((s, i) => ({ id: 'info' + i, icon: s.icon, title: s.title,
+    body: s.blocks.map(b => (b.h ? `<h4>${esc(b.h)}</h4>` : '') + (b.p ? `<p>${md(b.p)}</p>` : '') + (b.ul ? `<ul class="bl">${b.ul.map(x => `<li>${md(x)}</li>`).join('')}</ul>` : '') + (b.table ? table(b.table) : '') + (b.kind ? box(b) : '')).join('') + linkBtns(s.links) }));
+  items.push(
+    { id: 'zaino', icon: '🎒', title: 'Zaino: cosa portare', body: packingBody() },
+    { id: 'info_rules', icon: '🧭', title: 'Otto regole per muoversi in otto', body: `<ol class="bl">${TRIP.rules.map(r => `<li>${md(r)}</li>`).join('')}</ol>` },
+    { id: 'info_budget', icon: '🧮', title: 'Budget indicativo a testa', body: `${table(TRIP.budget)}<p class="legend">${esc(TRIP.budget.note)}</p>` });
   $('#info').innerHTML = `${heading('info', 'Informazioni pratiche', 'Le regole d\'ingresso cambiano spesso: ricontrollate tutto un mese prima su viaggiaresicuri.it.')}
-    ${TRIP.info.map((s, i) => `<details class="acc rv" id="info${i}" style="--c:${cols[i % cols.length]}"><summary><span class="dot"></span>${esc(s.title)}<span class="chev"></span></summary><div class="abody">
-      ${s.blocks.map(b => (b.h ? `<h4>${esc(b.h)}</h4>` : '') + (b.p ? `<p>${md(b.p)}</p>` : '') + (b.ul ? `<ul class="bl">${b.ul.map(x => `<li>${md(x)}</li>`).join('')}</ul>` : '') + (b.table ? table(b.table) : '') + (b.kind ? box(b) : '')).join('')}
-      ${linkBtns(s.links)}</div></details>`).join('')}`;
+    ${items.map((s, i) => `<details class="acc rv" id="${s.id}" style="--c:${cols[i % cols.length]}"><summary><span class="ico">${s.icon || ''}</span><span class="stt">${esc(s.title)}</span><span class="chev"></span></summary><div class="abody">${s.body}</div></details>`).join('')}`;
   $('footer').innerHTML = '<span class="th" lang="th">เที่ยวให้สนุก</span><small>Buon viaggio</small>';
 }
 
@@ -1059,6 +1119,7 @@ function goTo(id, closeId) {
   if (closeId) { const c = document.getElementById(closeId); if (c) c.open = false; }
   const sec = el.closest('main>section');
   if (sec) showSection(sec.id);
+  if (el.classList.contains('done')) el.classList.add('peek');
   if (el.tagName === 'DETAILS') el.open = true;
   closeSheet();
   setTimeout(() => {
@@ -1129,6 +1190,8 @@ function updateDone() {
     $$('.tile[data-go="' + d.id + '"], .pill[data-go="' + d.id + '"]').forEach(el => el.classList.toggle('done', on));
   });
   $$('.stage').forEach(st => { const ps = $$('.pill', st); st.classList.toggle('done', ps.length > 0 && ps.every(p => p.classList.contains('done'))); });
+  const rd = $('#resetDone'); if (rd) rd.hidden = !n;
+  const de = $('#dayEmpty'); if (de) de.hidden = n < tot;
   const t = $('#doneTxt'), b = $('#doneBar');
   if (t && b) { t.textContent = n ? 'Giorni fatti: ' + n + '/' + tot : 'Spunta i giorni che hai già fatto'; b.style.width = (n / tot * 100) + '%'; }
   const c = $('#ctaMain');
@@ -1143,14 +1206,19 @@ function updateDone() {
 function bindDone() {
   document.addEventListener('change', e => {
     const i = e.target.closest('input[data-done]'); if (!i) return;
-    if (i.checked) DONE[i.dataset.done] = 1; else delete DONE[i.dataset.done];
-    saveDone(); updateDone();
+    const id = i.dataset.done, det = document.getElementById(id);
+    if (i.checked) {
+      DONE[id] = 1; saveDone();
+      if (det) det.classList.add('leaving');
+      setTimeout(() => {
+        if (det) det.classList.remove('leaving', 'peek');
+        updateDone();
+        showSnack(() => { delete DONE[id]; saveDone(); updateDone(); });
+      }, reduced ? 0 : 280);
+    } else { delete DONE[id]; saveDone(); updateDone(); }
   });
   const r = $('#resetDone');
-  if (r) r.onclick = () => {
-    if (r.dataset.arm) { Object.keys(DONE).forEach(k => delete DONE[k]); saveDone(); updateDone(); r.textContent = 'Azzera giorni fatti'; delete r.dataset.arm; }
-    else { r.dataset.arm = 1; r.textContent = 'Tocca ancora per confermare'; setTimeout(() => { r.textContent = 'Azzera giorni fatti'; delete r.dataset.arm; }, 3000); }
-  };
+  if (r) r.onclick = () => { Object.keys(DONE).forEach(k => delete DONE[k]); saveDone(); $$('details.day.peek').forEach(d => d.classList.remove('peek')); updateDone(); $('#snack').classList.remove('on'); };
   updateDone();
 }
 
@@ -1195,7 +1263,7 @@ function setupScroll() {
 /* ---------- avvio ---------- */
 function init() {
   document.title = TRIP.title.charAt(0) + TRIP.title.slice(1).toLowerCase() + ' ' + TRIP.end.slice(0, 4);
-  renderTabs(); renderTrip(); renderDays(); renderTransfers(); renderPacking(); renderInfo(); buildSheet(); bindChecks(); bindDone();
+  renderTabs(); renderTrip(); renderDays(); renderMoves(); renderInfo(); buildSheet(); bindChecks(); bindDone(); bindMoves();
   $('#openAll').onclick = () => $$('details.day').forEach(d => d.open = true);
   $('#closeAll').onclick = () => $$('details.day').forEach(d => d.open = false);
   const hdr = $('header.top'); const setH = () => document.documentElement.style.setProperty('--hdr', (hdr.offsetHeight + 8) + 'px');
