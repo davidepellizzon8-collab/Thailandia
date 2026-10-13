@@ -283,6 +283,8 @@ details.day.done>summary .dtitle span::after{content:" · fatto";color:var(--lag
 /* ---------- sezioni: una alla volta ---------- */
 [hidden]{display:none!important}
 main>section.active{animation:secin .4s cubic-bezier(.2,.8,.2,1) both}
+main>section.active.swp{animation:secx .32s cubic-bezier(.2,.8,.2,1) both}
+@keyframes secx{from{opacity:0;transform:translateX(var(--dx,0))}to{opacity:1;transform:none}}
 @keyframes secin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 details.acc>summary .ico{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:1.1rem;background:color-mix(in srgb,var(--c) 16%,var(--surface))}
 details.acc>summary .stt{flex:1;min-width:0;line-height:1.25}
@@ -1187,8 +1189,14 @@ function renderTabs() {
   const s = parse(TRIP.start), e = parse(TRIP.end);
   $('#hdrDates').textContent = `${s.getDate()} ${MESI[s.getMonth()]} – ${e.getDate()} ${MESI[e.getMonth()]}`;
 }
+let swipeDir = 0;
 function showSection(id) {
-  $$('main>section').forEach(s => s.classList.toggle('active', s.id === id));
+  $$('main>section').forEach(s => {
+    s.classList.toggle('active', s.id === id);
+    s.classList.toggle('swp', s.id === id && !!swipeDir);
+    if (s.id === id) s.style.setProperty('--dx', swipeDir * 34 + 'px');
+  });
+  swipeDir = 0;
   $$('#tabs a').forEach(a => a.classList.toggle('on', a.dataset.go === id));
 }
 function goTo(id, closeId) {
@@ -1211,6 +1219,24 @@ document.addEventListener('click', e => {
   const b = e.target.closest('[data-go]');
   if (b) { e.preventDefault(); goTo(b.dataset.go, b.dataset.close); }
 });
+/* swipe orizzontale tra le sezioni */
+(() => {
+  let x0, y0, t0, ok = false;
+  const hscroll = el => { for (; el && el !== document.body; el = el.parentElement) if (el.scrollWidth > el.clientWidth + 2 && /(auto|scroll)/.test(getComputedStyle(el).overflowX)) return true; return false; };
+  document.addEventListener('touchstart', e => {
+    const t = e.touches[0]; x0 = t.clientX; y0 = t.clientY; t0 = Date.now();
+    ok = e.touches.length === 1 && !$('#sheetBg').classList.contains('on') && !hscroll(e.target) && !e.target.closest('input,textarea,select');
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (!ok) return; ok = false;
+    const t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0;
+    if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.6 || Date.now() - t0 > 700) return;
+    const ids = SECTIONS.map(x => x[0]), cur = ids.indexOf(($('main>section.active') || {}).id), nx = cur + (dx < 0 ? 1 : -1);
+    if (cur < 0 || nx < 0 || nx >= ids.length) return;
+    swipeDir = dx < 0 ? 1 : -1;
+    goTo(ids[nx]);
+  }, { passive: true });
+})();
 document.addEventListener('keydown', e => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.stage[data-go]')) { e.preventDefault(); goTo(e.target.dataset.go); }
   if (e.key === 'Escape') closeSheet();
