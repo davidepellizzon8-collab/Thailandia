@@ -350,7 +350,8 @@ details.day:nth-of-type(even) .dbadge{transform:rotate(2deg)}
 
 .pass{background:var(--surface);border-radius:12px}
 .pass .iata b{font-weight:700;font-size:1.85rem}
-.mvi .pass{background:linear-gradient(to bottom,color-mix(in srgb,var(--ink) 30%,transparent) 55%,transparent 0) calc(100% - 54px) 0/1.5px 9px repeat-y,var(--surface)}
+.mvi .pass{background:linear-gradient(to bottom,color-mix(in srgb,var(--ink) 30%,transparent) 55%,transparent 0) calc(100% - 58px) 0/1.5px 9px repeat-y,var(--surface);padding-right:76px}
+.pass .dur{color:var(--mute);font-weight:600}
 .tcard .h{font-weight:600;font-size:1.02rem}
 
 .box{border-radius:10px;border:1px solid color-mix(in srgb,var(--fg-b) 35%,transparent)}
@@ -358,7 +359,7 @@ details.day:nth-of-type(even) .dbadge{transform:rotate(2deg)}
 
 details.acc>summary{padding:12px 14px}
 details.acc{border-left-width:1px}
-details.acc>summary .ico{width:38px;height:38px;border-radius:50%;background:none;border:1.5px solid var(--c);color:var(--c);font:700 .95rem var(--serif)}
+details.acc>summary .ico{width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--c) 14%,var(--surface));border:1.5px solid var(--c);font-size:1.1rem}
 details.acc details.acc>summary .dot{border-radius:3px}
 .mvchk{border-color:var(--ink)}
 .tools button,.mvrestore{border:1.5px solid var(--ink);background:transparent;transition:background .15s,color .15s,transform .15s}
@@ -1007,12 +1008,21 @@ const SCENE = `
 
 /* ---------- ANTEPRIMA ---------- */
 function planeSvg() { return '<svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>'; }
+const TZ = { VCE: 1, VIE: 1, BKK: 7, DMK: 7, CEI: 7, CNX: 7, HKT: 7, TST: 7 };
+function flightDur(codes, time) {
+  const m = time.match(/(\d{1,2}):(\d{2})\s*[–-]\s*(\d{1,2}):(\d{2})(?:\s*\(\+(\d)\))?/);
+  if (!m || TZ[codes[0]] == null || TZ[codes[1]] == null) return '';
+  const dep = +m[1] * 60 + +m[2] - TZ[codes[0]] * 60;
+  const arr = +m[3] * 60 + +m[4] + (+m[5] || 0) * 1440 - TZ[codes[1]] * 60;
+  const d = arr - dep; if (d <= 0) return '';
+  return ` · ${Math.floor(d / 60)}h ${String(d % 60).padStart(2, '0')}`;
+}
 function pass(r) {
   const codes = r[1].match(/\b[A-Z]{3}\b/g) || ['', ''];
   const names = r[1].split('→').map(s => s.replace(/\b[A-Z]{3}\b/, '').replace(/\(.*?\)/, '').trim());
   return `<div class="pass rv"><div class="d">${esc(r[0])}</div>
     <div class="iata"><b>${esc(codes[0])}</b><div class="path">${planeSvg()}</div><b>${esc(codes[1])}</b></div>
-    <div class="nm"><span>${esc(names[0])}</span><span>${esc(names[1] || '')}</span></div><div class="tm">${esc(r[2])}</div></div>`;
+    <div class="nm"><span>${esc(names[0])}</span><span>${esc(names[1] || '')}</span></div><div class="tm">${esc(r[2])}<span class="dur">${flightDur(codes, r[2])}</span></div></div>`;
 }
 
 function renderTrip() {
@@ -1167,7 +1177,7 @@ function renderInfo() {
     { id: 'info_rules', icon: '🧭', title: 'Otto regole per muoversi in otto', body: `<ol class="bl">${TRIP.rules.map(r => `<li>${md(r)}</li>`).join('')}</ol>` },
     { id: 'info_budget', icon: '🧮', title: 'Budget indicativo a testa', body: `${table(TRIP.budget)}<p class="legend">${esc(TRIP.budget.note)}</p>` });
   $('#info').innerHTML = `${heading('info', 'Informazioni pratiche', 'Le regole d\'ingresso cambiano spesso: ricontrollate tutto un mese prima su viaggiaresicuri.it.')}
-    ${items.map((s, i) => `<details class="acc rv" id="${s.id}" style="--c:${cols[i % cols.length]}"><summary><span class="ico">${String(i + 1).padStart(2, '0')}</span><span class="stt">${esc(s.title)}</span><span class="chev"></span></summary><div class="abody">${s.body}</div></details>`).join('')}`;
+    ${items.map((s, i) => `<details class="acc rv" id="${s.id}" style="--c:${cols[i % cols.length]}"><summary><span class="ico">${s.icon || ''}</span><span class="stt">${esc(s.title)}</span><span class="chev"></span></summary><div class="abody">${s.body}</div></details>`).join('')}`;
   $('footer').innerHTML = '<span class="th" lang="th">เที่ยวให้สนุก</span><small>Buon viaggio</small>';
 }
 
