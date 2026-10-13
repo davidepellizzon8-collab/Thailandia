@@ -3,34 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0a4d57">
+<meta name="theme-color" content="#f3ead8">
 <title>Thailandia 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&display=swap">
 <style>
 /* Concept: alba sui calcari delle Andamane. Teal profondo + zafferano, regioni codificate a colore, percorso verticale che si disegna scorrendo. */
 :root{
-  --bg:#edf5f4;--surface:#ffffff;--surface2:#dfecea;--ink:#0b2a30;--mute:#55737a;--line:#cfe1de;
-  --saffron:#ff9a2e;--on-saffron:#2b1700;--accent-t:#b45f00;--brand:#0c6f78;--on-brand:#ffffff;
-  --bkk:#e8456b;--nord:#e59a0b;--lago:#0fa968;--sud:#0e8fd1;--travel:#7a6fd0;
-  --warn:#9a4d08;--warn-bg:#fff0d6;--tip:#0a7550;--tip-bg:#dcf4ea;--info:#25598f;--info-bg:#e0eefb;
-  --shadow:0 10px 28px rgba(8,50,56,.10);--glass:rgba(255,255,255,.78);
+  --bg:#f3ead8;--surface:#fbf6ea;--surface2:#eadfc6;--ink:#1c2b2e;--mute:#6a6757;--line:#d9ccb0;
+  --saffron:#f0a21e;--on-saffron:#2b1700;--accent-t:#b5381f;--brand:#0e5d63;--on-brand:#fffaf0;--vermilion:#c8402a;
+  --bkk:#cf4466;--nord:#d4901d;--lago:#2c9560;--sud:#1b7fb0;--travel:#7b70b8;
+  --warn:#8f4308;--warn-bg:#f8e3bd;--tip:#1d6a47;--tip-bg:#dbe9d3;--info:#245a7a;--info-bg:#d9e6e8;
+  --shadow:4px 4px 0 rgba(28,43,46,.14);--glass:rgba(243,234,216,.86);
   --display:"Prompt","Segoe UI",system-ui,sans-serif;--body:"IBM Plex Sans Thai","Segoe UI",system-ui,-apple-system,sans-serif;
-  --hdr:96px;--r:18px;
+  --hdr:96px;--r:12px;--serif:"Fraunces","Prompt",Georgia,serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#071a1e;--surface:#0f272c;--surface2:#16353b;--ink:#e8f3f1;--mute:#8fb0b3;--line:#1f4147;
-  --accent-t:#ffb454;--brand:#35d0c0;--on-brand:#052420;
+  --bg:#0f1b1c;--surface:#162728;--surface2:#1e3436;--ink:#efe6d2;--mute:#a1b0a6;--line:#2c4547;
+  --accent-t:#ff8f70;--brand:#5fd0c0;--on-brand:#052420;--vermilion:#ff7a5c;
   --bkk:#ff7a96;--nord:#ffb83d;--lago:#3fd694;--sud:#4cb8f0;--travel:#a79cf2;
   --warn:#ffc266;--warn-bg:#35260e;--tip:#58e0ac;--tip-bg:#0f3329;--info:#8ec3f5;--info-bg:#14293f;
-  --shadow:0 10px 28px rgba(0,0,0,.35);--glass:rgba(10,30,35,.78);color-scheme:dark}}
+  --shadow:4px 4px 0 rgba(0,0,0,.4);--glass:rgba(15,27,28,.86);color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#071a1e;--surface:#0f272c;--surface2:#16353b;--ink:#e8f3f1;--mute:#8fb0b3;--line:#1f4147;
-  --accent-t:#ffb454;--brand:#35d0c0;--on-brand:#052420;
+  --bg:#0f1b1c;--surface:#162728;--surface2:#1e3436;--ink:#efe6d2;--mute:#a1b0a6;--line:#2c4547;
+  --accent-t:#ff8f70;--brand:#5fd0c0;--on-brand:#052420;--vermilion:#ff7a5c;
   --bkk:#ff7a96;--nord:#ffb83d;--lago:#3fd694;--sud:#4cb8f0;--travel:#a79cf2;
   --warn:#ffc266;--warn-bg:#35260e;--tip:#58e0ac;--tip-bg:#0f3329;--info:#8ec3f5;--info-bg:#14293f;
-  --shadow:0 10px 28px rgba(0,0,0,.35);--glass:rgba(10,30,35,.78);color-scheme:dark}
+  --shadow:4px 4px 0 rgba(0,0,0,.4);--glass:rgba(15,27,28,.86);color-scheme:dark}
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -294,7 +294,7 @@ details.acc>summary .stt{flex:1;min-width:0;line-height:1.25}
 .mvi{position:relative;transition:opacity .28s,transform .28s cubic-bezier(.4,0,.2,1)}
 .mvi.leaving{opacity:0;transform:translateX(28px) scale(.97)}
 .mvi.gone,.mvgroup.empty{display:none}
-.mvi .tcard,.mvi .pass{padding-right:56px}
+.mvi .tcard,.mvi .pass,.mvi .box{padding-right:56px}
 .mvchk{position:absolute;top:50%;right:12px;width:34px;height:34px;margin-top:-17px;padding:0;border-radius:50%;border:2px solid var(--mute);background:var(--surface);display:grid;place-items:center;transition:background .2s,border-color .2s,transform .15s;z-index:2}
 .mvchk::after{content:"";width:7px;height:13px;border:solid var(--on-brand);border-width:0 3px 3px 0;transform:rotate(45deg) scale(0);margin-top:-3px;transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
 .mvchk:active,.mvi.leaving .mvchk{background:var(--lago);border-color:var(--lago);transform:scale(1.1)}
@@ -305,6 +305,76 @@ details.acc>summary .stt{flex:1;min-width:0;line-height:1.25}
 .snack{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:35;display:flex;align-items:center;gap:14px;background:var(--ink);color:var(--bg);border-radius:99px;padding:8px 8px 8px 18px;font-size:.88rem;box-shadow:0 10px 26px rgba(0,0,0,.3);transform:translate(-50%,20px);opacity:0;pointer-events:none;transition:opacity .25s,transform .3s cubic-bezier(.2,1.1,.3,1)}
 .snack.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 .snack button{border:0;border-radius:99px;background:var(--saffron);color:var(--on-saffron);padding:6px 14px;font:700 .84rem var(--display)}
+
+/* ---------- LOOK: taccuino di viaggio (carta, inchiostro, timbri) ---------- */
+body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .18 0 0 0 0 .1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(80% 36% at 100% 0%,color-mix(in srgb,var(--sud) 10%,transparent),transparent),radial-gradient(70% 30% at 0% 60%,color-mix(in srgb,var(--saffron) 10%,transparent),transparent);background-repeat:repeat,no-repeat,no-repeat}
+.logo,.sh h2,.hero h1,.count .num,.stage .where,.dbadge b,.dtitle strong,.tile b,.pass .iata b,.tcard .h,.mvempty b{font-family:var(--serif)}
+.logo{font-weight:700;letter-spacing:.16em}
+header.top{border-bottom:1.5px solid var(--ink)}
+.tabs{width:100%;max-width:720px;margin:0 auto;padding:0 10px;gap:0;background:none;border-radius:0}
+.tabs a{position:relative;border-radius:0;padding:9px 2px 13px;color:var(--mute)}
+.tabs a.on{background:none;box-shadow:none;color:var(--ink)}
+.tabs a.on::after{content:"";position:absolute;left:24%;right:24%;bottom:6px;height:3px;border-radius:3px;background:var(--vermilion)}
+.progress{background:linear-gradient(90deg,var(--saffron),var(--vermilion))}
+
+.sh{margin:38px 0 18px;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
+.sh .th{color:var(--vermilion);font-size:.85rem}
+.sh .th::before{display:none}
+.sh h2{font-weight:600;font-size:2.15rem;line-height:1.04;letter-spacing:-.015em;margin-top:4px}
+.sh p{margin-top:8px}
+.sub3{display:flex;align-items:center;gap:12px;color:var(--ink)}
+.sub3::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.hero{border-radius:22px;border:1.5px solid var(--ink)}
+.hero h1{font-weight:700;font-size:clamp(1.8rem,8.8vw,3.6rem);letter-spacing:.015em}
+.hero .th2,.eyebrow{color:#ffd9a3}
+.btn{box-shadow:3px 3px 0 rgba(0,0,0,.35)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(0,0,0,.35)}
+.stamp{position:absolute;z-index:3;right:12px;bottom:20px;width:96px;color:#ffe2b0;opacity:.88;transform:rotate(-13deg);pointer-events:none}
+.stamp svg{display:block;width:100%;height:auto}
+@media (min-width:560px){.stamp{width:108px;right:22px;bottom:22px}}
+
+.card,.tcard,.pass,details.day,details.acc,.stage,.tile{box-shadow:none}
+.card,.tcard,.pass,.stage,details.day,details.acc{border-color:color-mix(in srgb,var(--ink) 22%,var(--line))}
+.stage{background:color-mix(in srgb,var(--c) 9%,var(--surface))}
+@media (hover:hover){.stage:hover,.tile:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow)}}
+details.day[open],details.acc[open]{box-shadow:var(--shadow)}
+.tile{border-radius:10px;border-color:color-mix(in srgb,var(--ink) 22%,var(--line));background:color-mix(in srgb,var(--c) 10%,var(--surface))}
+.tile::after{top:0;bottom:auto;height:5px}
+.tile b{font-weight:700;font-size:1.5rem;margin-top:3px}
+.stage .where{font-weight:600;font-size:1.3rem}
+
+details.day>summary{background:color-mix(in srgb,var(--c) 10%,var(--surface))}
+.dbadge{border-radius:8px;border:1.5px solid var(--ink);border-bottom-width:5px;border-bottom-color:var(--c);background:var(--surface);transform:rotate(-2.5deg)}
+details.day:nth-of-type(even) .dbadge{transform:rotate(2deg)}
+.dbadge b{font-weight:700}
+.dtitle strong{font-weight:600;font-size:1.06rem}
+.tl .t{border-radius:6px;background:color-mix(in srgb,var(--c) 18%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
+
+.pass{background:var(--surface);border-radius:12px}
+.pass .iata b{font-weight:700;font-size:1.85rem}
+.mvi .pass{background:linear-gradient(to bottom,color-mix(in srgb,var(--ink) 30%,transparent) 55%,transparent 0) calc(100% - 54px) 0/1.5px 9px repeat-y,var(--surface)}
+.tcard .h{font-weight:600;font-size:1.02rem}
+
+.box{border-radius:10px;border:1px solid color-mix(in srgb,var(--fg-b) 35%,transparent)}
+.box h4{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+
+details.acc>summary{padding:12px 14px}
+details.acc{border-left-width:1px}
+details.acc>summary .ico{width:38px;height:38px;border-radius:50%;background:none;border:1.5px solid var(--c);color:var(--c);font:700 .95rem var(--serif)}
+details.acc details.acc>summary .dot{border-radius:3px}
+.mvchk{border-color:var(--ink)}
+.tools button,.mvrestore{border:1.5px solid var(--ink);background:transparent;transition:background .15s,color .15s,transform .15s}
+.tools button:active,.mvrestore:active{background:var(--ink);color:var(--bg)}
+
+.fab .go{border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.fab .go::after{display:none}
+.fab .go:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.fab .up{border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.sheet{border-radius:18px 18px 0 0;border-top:2px solid var(--ink)}
+.sheet button.it{border-radius:8px;border-color:color-mix(in srgb,var(--ink) 22%,var(--line))}
+.snack{border-radius:10px}
+footer .th{font-family:var(--display)}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -918,6 +988,7 @@ const SCENE = `
     <pattern id="wv1" width="60" height="12" patternUnits="userSpaceOnUse"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="1.6"/></pattern>
     <pattern id="wv2" width="60" height="12" patternUnits="userSpaceOnUse"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="#9be7e0" stroke-opacity=".3" stroke-width="1.6"/></pattern>
   </defs>
+  <path d="M0 150 L0 112 C40 104 60 80 96 92 C130 104 150 70 190 84 C230 98 260 118 300 108 C340 98 380 78 420 96 C470 118 520 104 560 90 C610 74 650 96 720 104 L720 150Z" fill="#2c7a80" opacity=".5"/>
   <g class="bird" style="--t:17s"><path d="M30 40 q6 -7 12 0 q6 -7 12 0" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="1.6" stroke-linecap="round"/></g>
   <g class="bird" style="--t:23s;animation-delay:-9s"><path d="M10 62 q5 -6 10 0 q5 -6 10 0" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/></g>
   <circle class="glow" cx="470" cy="136" r="120" fill="url(#gl)"/>
@@ -978,6 +1049,11 @@ function renderTrip() {
         </div>
       </div>
       ${SCENE}
+      <div class="stamp" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="stc" d="M60 60 m-43 0 a43 43 0 1 1 86 0 a43 43 0 1 1 -86 0"/></defs>
+        <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="60" cy="60" r="51" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text font-family="Fraunces,serif" font-size="9.5" font-weight="700" fill="currentColor"><textPath href="#stc" textLength="262" lengthAdjust="spacing">VENEZIA · BANGKOK · VENEZIA · ${e.getFullYear()} ·</textPath></text>
+        <text x="60" y="59" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-weight="800" fill="currentColor">${String(s.getDate()).padStart(2, '0')}.${String(s.getMonth() + 1).padStart(2, '0')}</text>
+        <text x="60" y="76" text-anchor="middle" font-family="Fraunces,serif" font-size="12" font-weight="600" fill="currentColor">${String(e.getDate()).padStart(2, '0')}.${String(e.getMonth() + 1).padStart(2, '0')}</text></svg></div>
     </div>
 
     ${heading('viaggio', 'Il viaggio in un colpo d\'occhio', 'Tocca un giorno per aprirlo subito.')}
@@ -1047,11 +1123,11 @@ function renderMoves() {
       <div class="passes">${F.intl.map((r, i) => mvItem('fi' + i, pass(r))).join('')}</div></div>
     <div class="mvgroup"><div class="sub3">Voli interni</div>
       <div class="passes">${F.domestic.map((r, i) => mvItem('fd' + i, pass(r))).join('')}</div></div>
-    ${TRIP.alerts.map(box).join('')}
+    ${TRIP.alerts.map((a, i) => mvItem('al' + i, box(a))).join('')}
     <div class="mvgroup"><div class="sub3">Tratte a terra e in barca</div>
       <p class="legend">${esc(T.note)}</p>
       ${T.rows.map((r, i) => mvItem('tr' + i, table({ head: T.head, rows: [r] }))).join('')}</div>
-    <div class="mvempty" id="mvEmpty" hidden><b>Tutto fatto ✓</b><span>Ogni volo e ogni tratta è stata spuntata.</span></div>`;
+    <div class="mvempty" id="mvEmpty" hidden><b>Tutto fatto ✓</b><span>Ogni volo, avviso e tratta è stato spuntato.</span></div>`;
 }
 let snackT = 0, snackKey = null;
 function showSnack(undo) {
@@ -1099,7 +1175,7 @@ function renderInfo() {
     { id: 'info_rules', icon: '🧭', title: 'Otto regole per muoversi in otto', body: `<ol class="bl">${TRIP.rules.map(r => `<li>${md(r)}</li>`).join('')}</ol>` },
     { id: 'info_budget', icon: '🧮', title: 'Budget indicativo a testa', body: `${table(TRIP.budget)}<p class="legend">${esc(TRIP.budget.note)}</p>` });
   $('#info').innerHTML = `${heading('info', 'Informazioni pratiche', 'Le regole d\'ingresso cambiano spesso: ricontrollate tutto un mese prima su viaggiaresicuri.it.')}
-    ${items.map((s, i) => `<details class="acc rv" id="${s.id}" style="--c:${cols[i % cols.length]}"><summary><span class="ico">${s.icon || ''}</span><span class="stt">${esc(s.title)}</span><span class="chev"></span></summary><div class="abody">${s.body}</div></details>`).join('')}`;
+    ${items.map((s, i) => `<details class="acc rv" id="${s.id}" style="--c:${cols[i % cols.length]}"><summary><span class="ico">${String(i + 1).padStart(2, '0')}</span><span class="stt">${esc(s.title)}</span><span class="chev"></span></summary><div class="abody">${s.body}</div></details>`).join('')}`;
   $('footer').innerHTML = '<span class="th" lang="th">เที่ยวให้สนุก</span><small>Buon viaggio</small>';
 }
 
