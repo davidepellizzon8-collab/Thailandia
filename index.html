@@ -69,21 +69,21 @@ h3{font:700 1.05rem var(--display);margin:0 0 8px}
 /* ---------- hero ---------- */
 .hero{position:relative;margin:14px 0 0;border-radius:28px;overflow:hidden;color:#fff;isolation:isolate;
   background:linear-gradient(180deg,#05262d 0%,#0a4d57 46%,#e9763f 88%,#ffb25c 100%)}
-.hero-txt{position:relative;z-index:2;padding:26px 22px 0}
+.hero-txt{position:relative;z-index:2;padding:20px 20px 0}
 .eyebrow{font:600 .78rem var(--display);letter-spacing:.2em;text-transform:uppercase;color:#ffd9a3}
 .hero h1{margin:8px 0 0;font:800 clamp(2rem,9.6vw,3.5rem)/1 var(--display);letter-spacing:.05em}
 .hero h1 span{display:inline-block;animation:rise .9s cubic-bezier(.2,.9,.3,1.2) both;animation-delay:calc(var(--i)*70ms + 150ms)}
 .hero .th2{font:500 1rem var(--display);color:#ffd9a3;margin-top:4px;letter-spacing:.08em;animation:fade 1.4s .9s both}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
 .chips span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(4px);border-radius:99px;padding:3px 12px;font-size:.84rem}
-.count{display:flex;align-items:baseline;gap:10px;margin:18px 0 4px}
+.count{display:flex;align-items:baseline;gap:10px;margin:12px 0 2px}
 .count .num{font:800 3.2rem/1 var(--display);font-variant-numeric:tabular-nums;color:#ffcf8a}
 .count .lbl{font-size:.95rem;opacity:.92}
 .tripbar{height:6px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden;margin:2px 0 6px}
 .tripbar i{display:block;height:100%;width:0;background:#ffcf8a;border-radius:9px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
-.lead{font-size:.95rem;opacity:.95;margin:10px 0 16px;max-width:52ch}
-.cta{display:flex;flex-wrap:wrap;gap:10px;padding-bottom:6px}
-.btn{border:0;border-radius:99px;padding:12px 20px;font:700 .95rem var(--display);background:var(--saffron);color:var(--on-saffron);box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .15s}
+.lead{font-size:.92rem;line-height:1.5;opacity:.95;margin:8px 0 12px;max-width:52ch}
+.cta{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:4px}
+.btn{border:0;border-radius:99px;padding:11px 16px;font:700 .9rem var(--display);background:var(--saffron);color:var(--on-saffron);box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .15s}
 .btn.ghost{background:rgba(5,38,45,.5);color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .btn:active{transform:scale(.95)}
 .scene{display:block;width:100%;height:auto;margin-top:-6px;position:relative;z-index:1}
@@ -148,7 +148,7 @@ h3{font:700 1.05rem var(--display);margin:0 0 8px}
 .pass .iata b{font:800 1.7rem/1 var(--display)}
 .pass .path{flex:1;position:relative;height:34px;min-width:20px}
 .pass .path::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px dashed var(--line)}
-.pass .path svg{position:absolute;left:0;top:50%;width:var(--ps,18px);height:var(--ps,18px);margin-top:calc(var(--ps,18px) / -2);fill:var(--pc,var(--brand));transform:rotate(90deg);animation:plane 4.5s ease-in-out infinite}
+.pass .path svg{position:absolute;left:0;top:50%;width:var(--ps,18px);height:var(--ps,18px);margin-top:calc(var(--ps,18px) / -2);fill:var(--pc,var(--brand));transform:rotate(90deg);animation:plane var(--pd,4.5s) ease-in-out infinite}
 @keyframes plane{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:calc(100% - var(--ps,18px));opacity:0}}
 .pass .nm{display:flex;justify-content:space-between;font-size:.84rem;color:var(--mute)}
 .pass .tm{font:700 .95rem var(--display);margin-top:4px;font-variant-numeric:tabular-nums}
@@ -396,7 +396,7 @@ const TRIP = {
   subtitle: "Nord · Giungla · Andamane",
   start: "2026-11-25",
   end: "2026-12-09",
-  meta: ["8 persone", "13 notti", "zaino in stiva"],
+  meta: ["13 notti"],
   summary: "Due giorni pieni a Bangkok, poi il Nord (Chiang Rai e Chiang Mai), un volo verso Phuket e otto giorni fra la giungla di Khao Sok, la falesia di Railay, Phi Phi, Koh Lanta e le isole del mare delle Andamane. Rientro da Trang via Bangkok.",
 
   flights: {
@@ -1005,7 +1005,8 @@ function planeStyle(d) {
   if (!d) return '';
   const size = Math.round(16 + Math.min(1, Math.max(0, (d - 60) / 600)) * 16);
   const col = d < 120 ? 'var(--sud)' : d < 480 ? 'var(--nord)' : 'var(--vermilion)';
-  return `--ps:${size}px;--pc:${col}`;
+  const dur = (2.2 + d / 60 * 1.1).toFixed(1);
+  return `--ps:${size}px;--pc:${col};--pd:${dur}s`;
 }
 function pass(r) {
   const codes = r[1].match(/\b[A-Z]{3}\b/g) || ['', ''];
@@ -1034,7 +1035,6 @@ function renderTrip() {
   $('#viaggio').innerHTML = `
     <div class="hero">
       <div class="hero-txt">
-        <div class="eyebrow">${esc(TRIP.subtitle)}</div>
         <h1 aria-label="${esc(TRIP.title)}">${letters}</h1>
         <div class="th2" lang="th">ประเทศไทย</div>
         <div class="chips"><span>${esc(range)}</span>${TRIP.meta.map(m => `<span>${esc(m)}</span>`).join('')}</div>
